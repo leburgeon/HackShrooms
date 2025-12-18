@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Meta tags provide information about the page to browsers and search engines -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- The title appears in the browser tab -->
     <title>Hackathon Starter</title>
 
-    <!-- Bootstrap CSS -->
+    <!-- Bootstrap CSS: A popular framework for styling websites quickly -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
 
-    <!-- Custom CSS -->
+    <!-- Custom CSS: Your own styles go here -->
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <!-- Navigation -->
+    <!-- Navigation: The bar at the top of the page -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">HackathonStarter</a>
@@ -43,21 +46,24 @@
       </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero Section: A large, prominent section at the top of the page -->
     <section class="hero bg-primary text-white text-center py-5">
       <div class="container">
         <h1 class="display-4 fw-bold">Welcome to Your Site</h1>
         <p class="lead">Build something amazing</p>
+        <!-- id="cta-button" allows us to find this button in script.js -->
         <button class="btn btn-light btn-lg" id="cta-button">
           Get Started
         </button>
       </div>
     </section>
 
-    <!-- Main Content -->
+    <!-- Main Content: The primary information on your page -->
     <main class="py-5">
       <div class="container">
+        <!-- row and col-md-4 are Bootstrap classes for creating a grid layout -->
         <div class="row g-4">
+          <!-- Each col-md-4 takes up 4 out of 12 columns (1/3 of the width) -->
           <div class="col-md-4">
             <div class="card">
               <div class="card-body">
@@ -92,17 +98,17 @@
       </div>
     </main>
 
-    <!-- Footer -->
+    <!-- Footer: Information at the bottom of the page -->
     <footer class="bg-dark text-white text-center py-4 mt-5">
       <div class="container">
         <p>&copy; 2025 Hackathon Starter. All rights reserved.</p>
       </div>
     </footer>
 
-    <!-- Bootstrap JS -->
+    <!-- Bootstrap JS: Required for interactive components like the mobile menu -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Custom JS -->
+    <!-- Custom JS: Your own interactive code goes here -->
     <script src="script.js"></script>
   </body>
 </html>

@@ -8,6 +8,12 @@ A simple HTML/CSS/JavaScript starter template with Bootstrap for building websit
 - `styles.css` - Custom CSS styles
 - `script.js` - JavaScript for interactivity
 
+## Comments
+
+We've added comments to this template to help you understand the structure and functionality of the code.
+
+These can be safely removed once you're comfortable with the setup.
+
 ## Getting Started
 
 ### Running the Project
