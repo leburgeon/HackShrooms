@@ -1,18 +1,46 @@
-// Custom JavaScript: This is where you add interactivity to your website
+//initial number of points  
+var num = 0;
 
-// This event listener waits for the entire HTML page to load before running any code
-document.addEventListener("DOMContentLoaded", function () {
-  console.log("Page loaded!");
+window.onload = function () {
+        var name = prompt("What is your name");
+        
+        var space = document.getElementById("space");
+        
+        space.innerHTML = name + "'s Shrooms";
+}
 
-  // We find the button using its unique ID from the HTML
-  const ctaButton = document.getElementById("cta-button");
+var cookie = document.getElementById("cookie");
 
-  // Check if the button exists on the page before adding an event listener
-  if (ctaButton) {
-    // This function runs whenever the button is clicked
-    ctaButton.addEventListener("click", function () {
-      console.log("CTA button clicked");
-      alert("Welcome! This is your starting point.");
-    });
-  }
-});
+function cookieClick() { 
+    num += 1;
+
+    var numbers = document.getElementById("numbers");
+    
+    //upgrade level for printing
+    var upgradeLevel = document.getElementById("upgradeLevel");
+    
+    numbers.innerHTML = num;      
+    //automatic Granny upgrade to 2x
+    if(num >= 30 ){
+        num += 2;
+        upgradeLevel.innerHTML = "Granny Level";
+    }
+
+    //automatic factory upgrade to 10x
+    if(num >= 500) {
+        num += 10;
+        upgradeLevel.innerHTML = "Factory Level";
+    }
+
+    //automatic plant upgrade to 30x
+    if(num >= 1000) {
+        num += 30;
+        upgradeLevel.innerHTML = "Plant Level";
+    }
+
+    //automatic super factory upgrade to 1000x
+    if(num >= 100000) {
+        num += 1000;
+        upgradeLevel.innerHTML = "Super-Plant Level";
+    }
+}
