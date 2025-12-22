@@ -1,3 +1,4 @@
+import helper from "./helper";
 //initial number of cookies    
 var num = 0;
 
@@ -44,3 +45,4 @@ function mushroomClick() {
         upgradeLevel.innerHTML = "Super-Plant Level";
     }
 }
+
