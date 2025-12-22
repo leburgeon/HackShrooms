@@ -1,1 +1,7 @@
-[{"username": "test", "score": 200, "portobello": 10}, {"username": "test2", "score": 999, "portobello": 99}, {"username": "test3", "score": 999, "portobello": 99}]
+[
+  { "username": "test", "score": 2000000, "portobello": 1000000 },
+  { "username": "test2", "score": 999, "portobello": 99 },
+  { "username": "test3", "score": 999, "portobello": 99 },
+  { "username": "test5", "score": 40, "crimini": 5 },
+  { "crimini": 5, "score": 40, "username": "test500" }
+]

@@ -124,3 +124,42 @@ document.addEventListener("DOMContentLoaded", function () {
         clickerUpgradeContainer.innerHTML += content;
     })
 })
+
+setInterval(spawnMushroomMiniGame, 15000); 
+
+function spawnMushroomMiniGame() {
+    for (let i = 0; i < 5; i++) {
+        createMushroom();
+    }
+}
+
+function createMushroom() {
+
+    // Spawn mushroom on screen
+    const mush = document.createElement('img');
+    mush.src = "/images/mush1.png";
+    mush.classList.add('mushroom');
+
+    // Use random co-ordinates
+    const x = Math.random() * (window.innerWidth - 256);
+    const y = Math.random() * (window.innerHeight - 256);
+    mush.style.left = x + 'px';
+    mush.style.top = y + 'px';
+
+    // Add points and remove mushroom on click
+    mush.addEventListener('click', () => {
+        
+        num += 100; 
+        numbers.innerHTML = num;      
+        mush.classList.add('mushroom');
+        mush.remove();
+            
+        // Remove after 5 second timeout
+        setTimeout(() => {
+            mush.remove();
+        }, 5000);
+    });
+
+    // Add to page
+    document.body.appendChild(mush);
+}
