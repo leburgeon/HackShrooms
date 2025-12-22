@@ -1,20 +1,17 @@
-# Hackathon Starter Template
+# HackShrooms Mushroom Clicker! 🍄🍄‍🟫
 
-A simple HTML/CSS/JavaScript starter template with Bootstrap for building websites quickly.
+Help **grow** mushrooms (and stop them from **shrinking**) and collect points in this **Mushroom Clicker**! Gain 
+points and upgrade your mushroom farm, get new skins, and more!
 
-## Project Structure
+<img src="pngmushroom.png" alt="mushroom" width="200"/>
+
+## Project Structure 🍄
 
 - `index.html` - Main HTML file with Bootstrap and responsive layout
 - `styles.css` - Custom CSS styles
 - `script.js` - JavaScript for interactivity
 
-## Comments
 
-We've added comments to this template to help you understand the structure and functionality of the code.
-
-These can be safely removed once you're comfortable with the setup.
-
-## Getting Started
 
 ### Running the Project
 
@@ -38,15 +35,11 @@ You will then be able to see changes in real-time as you edit your files.
 
 Go to `http://localhost:5500` (or the port specified by Live Server) to view your project.
 
-## Customization
-
-- Edit `index.html` to modify content and structure
-- Edit `styles.css` to customize colors and styling
-- Edit `script.js` to add interactive features
-
 ## Technologies Used
 
 - HTML5
 - CSS3
 - JavaScript (Vanilla)
 - [Bootstrap 5](https://getbootstrap.com/)
+- Python
+    - Flask
