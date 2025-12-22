@@ -17,3 +17,8 @@ footer {
     /* margin-top: auto helps push the footer to the bottom if there's little content */
     margin-top: auto;
 }
+
+#main-mushroom-img {
+    width: 200px;
+    text-align: center;
+}

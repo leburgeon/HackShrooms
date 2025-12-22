@@ -1,17 +1,17 @@
-//initial number of points  
+//initial number of cookies    
 var num = 0;
 
-window.onload = function () {
-        var name = prompt("What is your name");
+// window.onload = function () {
+//         var name = prompt("What is your name");
         
-        var space = document.getElementById("space");
+//         var space = document.getElementById("space");
         
-        space.innerHTML = name + "'s Shrooms";
-}
+//         space.innerHTML = name + "'s Bakery";
+// }
 
-var cookie = document.getElementById("cookie");
+var mushroom = document.getElementById("main-mushroom");
 
-function cookieClick() { 
+function mushroomClick() { 
     num += 1;
 
     var numbers = document.getElementById("numbers");
