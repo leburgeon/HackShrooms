@@ -4,7 +4,35 @@
 var Game = {
     mushrooms: 0,
     lifetimeMushrooms: 0,
-    updrades: {}
+    upgrades: {
+        auto: [
+        {
+            name: "Grow Bed",
+            lvl: 0,
+            cost: 10
+        },
+        {
+            name: "Farm",
+            lvl: 0,
+            cost: 100
+        },
+        {
+            name: "Laboratory",
+            lvl: 0,
+            cost: 1000
+        }],
+        clicker: [
+        {
+            name: "Scythe",
+            lvl: 0,
+            cost: 10
+        },
+        {
+            name: "Tractor",
+            lvl: 0,
+            cost: 100
+        }]
+    }
 }
 
 var num = 0
@@ -53,36 +81,6 @@ function mushroomClick() {
     }
 }
 
-const autoUpgrades = [
-    {
-        name: "Grow Bed",
-        lvl: 0,
-        cost: 10
-    },
-    {
-        name: "Farm",
-        lvl: 0,
-        cost: 100
-    },
-    {
-        name: "Laboratory",
-        lvl: 0,
-        cost: 1000
-    }
-]
-
-const clickerUpgrades = [
-    {
-        name: "Scythe",
-        lvl: 0,
-        cost: 10
-    },
-    {
-        name: "Tractor",
-        lvl: 0,
-        cost: 100
-    }
-]
 
 function buildUpgradeCard(upgrade) {
     const card = document.createElement("div");
@@ -119,13 +117,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const autoUpgradeContainer = document.getElementById("auto-upgrades-list");
     
-    autoUpgrades.forEach((upgrade) => {
+    Game["upgrades"]["auto"].forEach((upgrade) => {
         content = buildUpgradeCard(upgrade)
         autoUpgradeContainer.innerHTML += content;
     })
 
     const clickerUpgradeContainer = document.getElementById("clicker-upgrades-list");
-    clickerUpgrades.forEach((upgrade) => {
+    Game["upgrades"]["clicker"].forEach((upgrade) => {
         content = buildUpgradeCard(upgrade)
         clickerUpgradeContainer.innerHTML += content;
     })
