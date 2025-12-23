@@ -121,11 +121,6 @@ function upgradeCard(idx) {
     }
 }
 
-const upgradeImages = {
-    "auto": [images.bed, images.farm, images.lab],
-    "clicker": [images.scythe, images.tractor]
-}
-
 function buildUpgradeCard(upgrade, type, idx) {
     const card = document.createElement("div");
     card.classList = "card";
@@ -136,7 +131,7 @@ function buildUpgradeCard(upgrade, type, idx) {
             <div class="container text-center">
                 <div class="row align-items-start">
                     <div class="col">
-                        (image)
+                        <img src=${upgradeImages[type][idx]}/>
                     </div>
                     <div class="col">
                         ${upgrade.name}
@@ -159,6 +154,10 @@ function buildUpgradeCard(upgrade, type, idx) {
 document.addEventListener("DOMContentLoaded", function () {
     console.log("page loaded")
 
+    const upgradeImages = {
+    "auto": [images.bed, images.farm, images.lab],
+    "clicker": [images.scythe, images.tractor]
+    }
     // Load player data if any here
 
     const autoUpgradeContainer = document.getElementById("auto-upgrades-list");
@@ -176,6 +175,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     calculateMushroomPerSecond()
     calculateMushroomPerClick()
+
 })
 
 
