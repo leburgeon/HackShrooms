@@ -57,6 +57,8 @@ async function handleLogin () {
     if (playerdata != null){
         Game = playerdata
     }
+
+    Game.username = username
 }
 
 function handleSavePlayerData() {

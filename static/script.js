@@ -365,18 +365,6 @@ function createMushroom() {
     document.body.appendChild(mush);
 }
 
-async function testfunc() {
-    console.log('inside test function')
-
-    updatedata = {
-        username: 'testPlayffffffer01',
-        mushrooms: 696969
-    }
-
-    savePlayerData(updatedata)
-
-    console.log('test function over')
-}
 
 function updateUnlocks() {
 
