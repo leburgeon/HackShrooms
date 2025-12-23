@@ -122,7 +122,7 @@ function upgradeCard(idx) {
 }
 
 const upgradeImages = {
-    "auto": [],
+    "auto": [images.bed, images.farm, images.lab],
     "clicker": [images.scythe, images.tractor]
 }
 
