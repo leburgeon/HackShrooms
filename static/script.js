@@ -1,6 +1,3 @@
-
-
-//initial number of cookies
 var Game = {
     mushrooms: 0,
     lifetimeMushrooms: 0,
