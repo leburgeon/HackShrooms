@@ -1,13 +1,33 @@
-import axios from 'axios'
+const apiUrl = '/api/'
 
 const getPlayerData = async (username) => {
-    const response = await axios.get('/getplayerdata/${username}')
-    return response
+    try{
+        const response = await fetch(apiUrl + '/getplayerdata/' + username)
+        return JSON.stringify(response.data)
+    } catch (error) {
+        console.error(error)
+    }
+    
 }
 
 const savePlayerData = async (userData) => {
-    const response = await axios.post('/saveplayerdata', userData)
-    return response
+    options = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    }
+
+    try {
+        response = await fetch(apiUrl + 'saveplayerdata')
+        if (!response.ok) {
+            throw new Error('Network response was not ok')
+        }
+    } catch (error) {
+        window.alert('Could not save data! ' + error.message)
+        console.error(error)
+    }
 }
 
-export default {getPlayerData}
+export default {getPlayerData, savePlayerData}

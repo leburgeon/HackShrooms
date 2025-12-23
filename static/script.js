@@ -1,7 +1,13 @@
 // import helper from "./helper";
 
 //initial number of cookies    
-var num = 0;
+var Game = {
+    mushrooms: 0,
+    lifetimeMushrooms: 0,
+    updrades: {}
+}
+
+var num = 0
 
 // window.onload = function () {
 //         var name = prompt("What is your name");
