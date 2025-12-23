@@ -132,6 +132,7 @@ function buildUpgradeCard(upgrade, type, idx) {
                 <div class="row align-items-start">
                     <div class="col">
                         <img src=${upgradeImages[type][idx]}/>
+                        <img src=${upgradeImages[type][idx]}/>
                     </div>
                     <div class="col">
                         ${upgrade.name}
@@ -175,6 +176,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     calculateMushroomPerSecond()
     calculateMushroomPerClick()
+
 
 })
 
