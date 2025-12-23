@@ -1,5 +1,4 @@
-const params = new URLSearchParams(window.location.search);
-const username = params.get("username");
+
 
 document.addEventListener("DOMContentLoaded", async function () {
     console.log("page loaded")
@@ -10,9 +9,20 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
 
     // Load player data if any here
+    const params = new URLSearchParams(window.location.search);
+    const username = params.get("username");
 
     const fetchedUserData = await getPlayerData(username)
     console.log(fetchedUserData)
+
+    // Handles a new user being added
+    if (fetchedUserData == null){
+        Game.username = username
+        savePlayerData(Game)
+    // Else loads the existing player data
+    } else {
+        Game = fetchedUserData
+    }
 
     const autoUpgradeContainer = document.getElementById("auto-upgrades-list");
     
@@ -48,10 +58,10 @@ document.addEventListener("DOMContentLoaded", async function () {
     calculateMushroomPerClick()
 })
 
+setInterval(handleSavePlayerData, 10000)
+
 var mushroomPerSecond = 0
 var mushroomPerClick = 1
-
-
 
 function calculateMushroomPerSecond() {
     Game["upgrades"]["auto"].forEach((upgrade) => {
