@@ -131,7 +131,7 @@ function buildUpgradeCard(upgrade, type, idx, images) {
             <div class="container text-center">
                 <div class="row align-items-start">
                     <div class="col">
-                        <img src=${images[type][idx]}/>
+                        <img src=${images[type][idx]} height=50px/>
                     </div>
                     <div class="col">
                         ${upgrade.name}
