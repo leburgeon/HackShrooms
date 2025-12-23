@@ -7,17 +7,17 @@
 
 /* :root is used to define global variables (colors, fonts, etc.) that you can reuse */
 :root {
-    --primary-color: rgb(207, 168, 123);
+    --primary-color: #cfa87b;
     --secondary-color: #6c757d;
 }
 
 /* body styles apply to the entire page */
 body {
-    /* font-family sets the text style. If the first font isn't available, it tries the next one. */
     font-family: "Pixelify Sans", sans-serif;
     font-optical-sizing: auto;
     font-weight: 500;
     font-style: normal;
+    background-color: #cfa87b;
 }
 
 /* footer styles apply only to the <footer> element */
