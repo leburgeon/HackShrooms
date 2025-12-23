@@ -127,11 +127,9 @@ footer {
     z-index: 999;       
     height: 50px;
     
-    /* This part handles the movement */
     animation: moveSideToSide 25s linear infinite alternate;
   }
 
-  /* Define the left-to-right movement */
   @keyframes moveSideToSide {
     from { left: 7%; }
     to { left: 90%; }
