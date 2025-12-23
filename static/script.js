@@ -353,4 +353,10 @@ function updateUnlocks() {
 
 }
 
+function playAudio() {
+    var audio = document.getElementById("captainSound");
+    audio.volume = 0.2;
+    audio.play();
+}
+
 setInterval(updateUnlocks, 1000); 

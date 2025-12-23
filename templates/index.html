@@ -22,8 +22,12 @@
     </section>
 
   <!-- Captain toad moving across screen -->
-    <img src="{{ url_for('static', filename='images/captainwalking.gif') }}" class="captain-toad"/>
+    <img src="{{ url_for('static', filename='images/captainwalking.gif') }}" class="captain-toad" onclick="playAudio()"/>
 
+    <audio id="captainSound">
+      <source src="{{ url_for('static', filename='audio/toad-sound.mp3') }}" type="audio/mpeg">
+    </audio>
+  
   <!-- Main Content: The primary information on your page -->
     <main class="py-5">
       <div class="container text-center">
