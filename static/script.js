@@ -263,7 +263,14 @@ function purchaseSkin(idx) {
     btn.innerHTML = "✓";
     btn.disabled = true;
 
-    mushroom = skinImages[skin.name]
+    const skinImages = [
+        images.galaxy,
+        images.candy,
+        images.groot,
+        images.golden
+    ]
+
+    mushroom.firstElementChild.src = skinImages[idx]
 
     updateMushroomsCount();
     updateUnlocks();
