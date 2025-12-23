@@ -74,10 +74,10 @@
                     class="nav-link active"
                     id="auto"
                     data-bs-toggle="tab"
-                    data-bs-target="#home-tab-pane"
+                    data-bs-target="#auto-upgrades"
                     type="button"
                     role="tab"
-                    aria-controls="home-tab-pane"
+                    aria-controls="auto-upgrades"
                     aria-selected="true"
                   >
                     Auto Upgrades
@@ -88,10 +88,10 @@
                     class="nav-link"
                     id="click"
                     data-bs-toggle="tab"
-                    data-bs-target="#profile-tab-pane"
+                    data-bs-target="#clicker-upgrades"
                     type="button"
                     role="tab"
-                    aria-controls="profile-tab-pane"
+                    aria-controls="clicker-upgrades"
                     aria-selected="false"
                   >
                     Clicker Upgrades
@@ -102,13 +102,27 @@
                     class="nav-link"
                     id="option"
                     data-bs-toggle="tab"
-                    data-bs-target="#contact-tab-pane"
+                    data-bs-target="#skins"
                     type="button"
                     role="tab"
-                    aria-controls="contact-tab-pane"
+                    aria-controls="skins"
                     aria-selected="false"
                   >
-                    Options
+                    Skins
+                  </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button
+                    class="nav-link"
+                    id="option"
+                    data-bs-toggle="tab"
+                    data-bs-target="#info"
+                    type="button"
+                    role="tab"
+                    aria-controls="info"
+                    aria-selected="false"
+                  >
+                    Info
                   </button>
                 </li>
               </ul>
@@ -116,9 +130,9 @@
               <div class="tab-content" id="myTabContent">
                 <div
                   class="tab-pane fade show active"
-                  id="home-tab-pane"
+                  id="auto-upgrades"
                   role="tabpanel"
-                  aria-labelledby="home-tab"
+                  aria-labelledby="auto-upgrades"
                   tabindex="0"
                 >
                   <div id="auto-upgrades-list"></div>
@@ -126,9 +140,9 @@
 
                 <div
                   class="tab-pane fade"
-                  id="profile-tab-pane"
+                  id="clicker-upgrades"
                   role="tabpanel"
-                  aria-labelledby="profile-tab"
+                  aria-labelledby="clicker-upgrades"
                   tabindex="0"
                 >
                   <div id="clicker-upgrades-list"></div>
@@ -136,12 +150,22 @@
 
                 <div
                   class="tab-pane fade"
-                  id="contact-tab-pane"
+                  id="skins"
                   role="tabpanel"
-                  aria-labelledby="contact-tab"
+                  aria-labelledby="skins"
                   tabindex="0"
                 >
                   <div id="skins-list"></div>
+                </div>
+
+                <div
+                  class="tab-pane fade"
+                  id="info"
+                  role="tabpanel"
+                  aria-labelledby="info"
+                  tabindex="0"
+                >
+                  <div>I'm very helpful</div>
                 </div>
               </div>
             </div>
