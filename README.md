@@ -1,6 +1,6 @@
-# HackShrooms Mushroom Clicker! 🍄🍄‍🟫
+# HackShrooms Mushroom Masher! 🍄🍄‍🟫
 
-Help **grow** mushrooms (and stop them from **shrinking**) and collect points in this **Mushroom Clicker**! Gain 
+Help **grow** mushrooms (and stop them from **shrinking**) and collect points in this **Mushroom Masher**! Gain 
 points and upgrade your mushroom farm, get new skins, and more!
 
 <img src="pngmushroom.png" alt="mushroom" width="200"/>
@@ -10,8 +10,6 @@ points and upgrade your mushroom farm, get new skins, and more!
 - `index.html` - Main HTML file with Bootstrap and responsive layout
 - `styles.css` - Custom CSS styles
 - `script.js` - JavaScript for interactivity
-
-
 
 ### Running the Project
 

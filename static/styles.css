@@ -1,4 +1,9 @@
-/* Custom Styles: This is where you write your own CSS to change how the page looks */
+/* Colour palette: 
+    --deep-walnut: #513D26ff;
+    --mauve-shadow: #6E374Eff;
+    --olive-leaf: #2E4109ff;
+    --crimson-violet: #6B0645ff;
+    --olive-leaf-2: #6B692Aff;
 
 /* :root is used to define global variables (colors, fonts, etc.) that you can reuse */
 :root {
