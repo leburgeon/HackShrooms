@@ -101,7 +101,7 @@ function updateMushroomsCount() {
 function pulseMushroom() {
 
     mushroom.style.transition = "transform 0.1s ease";
-    mushroom.style.transform = "scale(1.1)";
+    mushroom.style.transform = "scale(0.9)";
     setTimeout(function() {
         mushroom.style.transform = "scale(1)";
     }, 100);
