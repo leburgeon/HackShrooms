@@ -1,12 +1,57 @@
 const params = new URLSearchParams(window.location.search);
 const username = params.get("username");
 
+document.addEventListener("DOMContentLoaded", async function () {
+    console.log("page loaded")
 
+    const upgradeImages = {
+    "auto": [images.bed, images.terrarium, images.greenhouse, images.farm, images.lab],
+    "clicker": [images.clipper, images.scythe, images.tractor, images.volunteer]
+    }
 
+    // Load player data if any here
 
+    const fetchedUserData = await getPlayerData(username)
+    console.log(fetchedUserData)
+
+    const autoUpgradeContainer = document.getElementById("auto-upgrades-list");
+    
+    Game["upgrades"]["auto"].forEach((upgrade, idx) => {
+        content = buildUpgradeCard("auto", idx, upgradeImages)
+        autoUpgradeContainer.innerHTML += content;
+    })
+
+    const clickerUpgradeContainer = document.getElementById("clicker-upgrades-list");
+    Game["upgrades"]["clicker"].forEach((upgrade, idx) => {
+        content = buildUpgradeCard("clicker", idx, upgradeImages)
+        clickerUpgradeContainer.innerHTML += content;
+    })
+
+    updateUpgrade("auto", 0)
+    updateUpgrade("clicker", 0)
+
+    const skinImages = [
+        images.defaultMushroom,
+        images.galaxy,
+        images.candy,
+        images.groot,
+        images.golden
+    ]
+
+    const optionsContainer = document.getElementById("skins-list");
+    Game["skins"].forEach((name, idx) => {
+        content = buildOptionsCard(name, idx, skinImages)
+        optionsContainer.innerHTML += content;
+    })
+
+    calculateMushroomPerSecond()
+    calculateMushroomPerClick()
+})
 
 var mushroomPerSecond = 0
 var mushroomPerClick = 1
+
+
 
 function calculateMushroomPerSecond() {
     Game["upgrades"]["auto"].forEach((upgrade) => {
@@ -178,54 +223,6 @@ function purchaseSkin(idx) {
     updateMushroomsCount();
     updateUnlocks();
 }
-
-document.addEventListener("DOMContentLoaded", async function () {
-    console.log("page loaded")
-
-    const upgradeImages = {
-    "auto": [images.bed, images.terrarium, images.greenhouse, images.farm, images.lab],
-    "clicker": [images.clipper, images.scythe, images.tractor, images.volunteer]
-    }
-
-    // Load player data if any here
-
-    const fetchedUserData = await getPlayerData(username)
-    console.log(fetchedUserData)
-
-    const autoUpgradeContainer = document.getElementById("auto-upgrades-list");
-    
-    Game["upgrades"]["auto"].forEach((upgrade, idx) => {
-        content = buildUpgradeCard("auto", idx, upgradeImages)
-        autoUpgradeContainer.innerHTML += content;
-    })
-
-    const clickerUpgradeContainer = document.getElementById("clicker-upgrades-list");
-    Game["upgrades"]["clicker"].forEach((upgrade, idx) => {
-        content = buildUpgradeCard("clicker", idx, upgradeImages)
-        clickerUpgradeContainer.innerHTML += content;
-    })
-
-    updateUpgrade("auto", 0)
-    updateUpgrade("clicker", 0)
-
-    const skinImages = [
-        images.defaultMushroom,
-        images.galaxy,
-        images.candy,
-        images.groot,
-        images.golden
-    ]
-
-    const optionsContainer = document.getElementById("skins-list");
-    Game["skins"].forEach((name, idx) => {
-        content = buildOptionsCard(name, idx, skinImages)
-        optionsContainer.innerHTML += content;
-    })
-
-    calculateMushroomPerSecond()
-    calculateMushroomPerClick()
-})
-
 
 setInterval(spawnMushroomMiniGame, 15000); 
 
