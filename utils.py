@@ -10,7 +10,7 @@ def load_all_data() -> list[dict]:
         return d
 
 
-def load_player_data(username: str) -> dict:
+def load_player_data(username: str) -> dict | None:
     """Given a username, retrieve all of the information for that user"""
 
     all_data = load_all_data()

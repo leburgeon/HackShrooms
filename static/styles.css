@@ -17,18 +17,28 @@ body {
     font-optical-sizing: auto;
     font-weight: 500;
     font-style: normal;
-    background-color: #cfa87b;
+    background:
+    linear-gradient(
+        rgba(207, 168, 123, 0.7),
+        rgba(207, 168, 123, 0.7)
+    ),
+    url('/static/images/pixelbg.jpg');
 }
 
 .hero {
-    background-color: #6E374Eff;
     color: white;
     text-align: center;
+    background: 
+    linear-gradient(
+        rgb(110, 55, 78, 0.7),
+        rgb(110, 55, 78, 0.7)
+    ),
+    url('/static/images/headerfooterbf.gif');
+    background-repeat: repeat-x;
 }
 
 .game-col {
-
-    background: linear-gradient(145deg, #2E4109ff, #1e1e1e);
+    background: linear-gradient(170deg, #2E4109ff, #1e1e1e);
     border: 4px solid #6B692Aff;
     border-radius: 18px;
     padding: 20px;
@@ -36,15 +46,43 @@ body {
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
 }
 
-/* footer styles apply only to the <footer> element */
+button {
+    color: #1e1e1e;
+    background-color: #FFDE66;
+    border-color: #ccaf43;
+    border-radius: 10px;
+}
+
+.nav-link {
+    color: rgb(238, 200, 216);
+}
+
+.nav-link:hover {
+    color: rgb(245, 119, 171);
+}
+
 footer {
     /* margin-top: auto helps push the footer to the bottom if there's little content */
     margin-top: auto;
+    background:
+    linear-gradient(
+        rgb(110, 55, 78, 0.7),
+        rgb(110, 55, 78, 0.7)
+    ),
+    url('/static/images/headerfooterbf.gif');
+    background-repeat: repeat-x;
+    background-position: 10%;
 }
 
 #main-mushroom-img {
-    width: 200px;
+    width: 250px;
     text-align: center;
+    margin-top: 20px;
+    transition: transform .2s;
+}
+
+#main-mushroom-img:hover {
+    transform: scale(1.1);
 }
 
 .mushroom {
@@ -52,10 +90,98 @@ footer {
     width: 50px;
     height: 50px;
     cursor: pointer;
-    animation: fadeOut 5s forwards; 
+    animation: wobble 6s forwards;
 }
 
-@keyframes fadeOut {
-    0% {scale: 1; opacity: 1;}
-    100% {scale: 0; opacity: 0;}
+@keyframes wobble {
+    0% { transform: scale(0) rotate(-20deg); opacity: 0; }
+    30% { transform: scale(1) rotate(20deg); opacity: 1; }
+    60% { transform: scale(1) rotate(-20deg); }
+    100% { transform: scale(0) rotate(0deg); }
+}
+
+.footer-image-row {
+  width: 100%;
+  line-height: 0;
+}
+
+.footer-image-row img {
+  height: 50px;
+  display: block; 
+  object-fit:cover;
+
+  filter: brightness(0);
+  opacity: 0.5;
+  transition: filter 0.5s ease, opacity 0.5s ease;
+}
+
+.footer-image-row img.unlocked {
+  filter: brightness(1);
+  opacity: 1;
+}
+
+#upgrade-imgs img {
+  height: 50px;
+  display: block; 
+  object-fit:cover;
+
+  filter: brightness(0);
+  opacity: 0.5;
+  transition: filter 0.5s ease, opacity 0.5s ease;
+}
+
+#upgrade-imgs img.unlocked {
+  filter: brightness(1);
+  opacity: 1;
+}
+
+#auto-upgrades-list {
+  height: 410px;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+
+#clicker-upgrades-list {
+  height: 410px;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+
+#skins-list {
+  height: 410px;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+
+.captain-toad {
+    position: absolute; 
+    top: 55px;          
+    left: 50px;       
+    z-index: 999;       
+    height: 50px;
+    
+    animation: moveSideToSide 25s linear infinite alternate;
+  }
+
+  @keyframes moveSideToSide {
+    from { left: 7%; }
+    to { left: 90%; }
+  }
+
+  #musicToggle {
+    position: absolute;   
+    top: 10px;         
+    left: 10px;        
+    z-index: 9999;
+}
+
+  #saveData {
+    position: absolute;   
+    top: 10px;         
+    right: 10px;        
+    z-index: 9999;
+}
+
+#info {
+  margin-top: 120px;
 }

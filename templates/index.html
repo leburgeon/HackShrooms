@@ -9,12 +9,25 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" text="text/css" href='../static/styles.css' />
-    <script src="../static/script.js"></script>
   </head>
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
     </style>
   <body>
+
+
+    <!-- Button to play Moog City in the Background -->
+
+    <audio id="bgMusic" loop>
+        <source src="{{ url_for('static', filename='audio/moogcity.mp3') }}" type="audio/mpeg">
+    </audio>
+
+    <button id="musicToggle" onclick="toggleMusic()">
+      Play Music 🎵
+    </button>
+
+    <button id="saveData" onclick="handleSavePlayerData()">Save</button>
+
     <!-- Hero Section: A large, prominent section at the top of the page -->
     <section class="hero">
       <div class="container">
@@ -22,6 +35,13 @@
       </div>
     </section>
 
+  <!-- Captain toad moving across screen -->
+    <img src="{{ url_for('static', filename='images/captainwalking.gif') }}" class="captain-toad" onclick="playAudio()"/>
+
+    <audio id="captainSound">
+      <source src="{{ url_for('static', filename='audio/toad-sound.mp3') }}" type="audio/mpeg">
+    </audio>
+  
   <!-- Main Content: The primary information on your page -->
     <main class="py-5">
       <div class="container text-center">
@@ -38,7 +58,12 @@
                 </div>
               </div>
               <div id="main-mushroom" onclick="mushroomClick()">
-                <img id="main-mushroom-img" src="{{ url_for('static', filename='images/pngmushroom.png') }}" />
+                <img id="main-mushroom-img" src="{{ url_for('static', filename='images/pngmushroom.png') }}" onclick="pulseMushroom()"/>
+              </div>
+              <div>
+                <h1 onclick="testfunc()">
+                  test
+                </h1>
               </div>
             </div>
           </div>
@@ -51,10 +76,10 @@
                     class="nav-link active"
                     id="auto"
                     data-bs-toggle="tab"
-                    data-bs-target="#home-tab-pane"
+                    data-bs-target="#auto-upgrades"
                     type="button"
                     role="tab"
-                    aria-controls="home-tab-pane"
+                    aria-controls="auto-upgrades"
                     aria-selected="true"
                   >
                     Auto Upgrades
@@ -65,10 +90,10 @@
                     class="nav-link"
                     id="click"
                     data-bs-toggle="tab"
-                    data-bs-target="#profile-tab-pane"
+                    data-bs-target="#clicker-upgrades"
                     type="button"
                     role="tab"
-                    aria-controls="profile-tab-pane"
+                    aria-controls="clicker-upgrades"
                     aria-selected="false"
                   >
                     Clicker Upgrades
@@ -79,13 +104,27 @@
                     class="nav-link"
                     id="option"
                     data-bs-toggle="tab"
-                    data-bs-target="#contact-tab-pane"
+                    data-bs-target="#skins"
                     type="button"
                     role="tab"
-                    aria-controls="contact-tab-pane"
+                    aria-controls="skins"
                     aria-selected="false"
                   >
-                    Options
+                    Skins
+                  </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button
+                    class="nav-link"
+                    id="option"
+                    data-bs-toggle="tab"
+                    data-bs-target="#info"
+                    type="button"
+                    role="tab"
+                    aria-controls="info"
+                    aria-selected="false"
+                  >
+                    Info
                   </button>
                 </li>
               </ul>
@@ -93,34 +132,48 @@
               <div class="tab-content" id="myTabContent">
                 <div
                   class="tab-pane fade show active"
-                  id="home-tab-pane"
+                  id="auto-upgrades"
                   role="tabpanel"
-                  aria-labelledby="home-tab"
+                  aria-labelledby="auto-upgrades"
                   tabindex="0"
                 >
-                  Auto Ups
                   <div id="auto-upgrades-list"></div>
                 </div>
 
                 <div
                   class="tab-pane fade"
-                  id="profile-tab-pane"
+                  id="clicker-upgrades"
                   role="tabpanel"
-                  aria-labelledby="profile-tab"
+                  aria-labelledby="clicker-upgrades"
                   tabindex="0"
                 >
-                  Click Ups
                   <div id="clicker-upgrades-list"></div>
                 </div>
 
                 <div
                   class="tab-pane fade"
-                  id="contact-tab-pane"
+                  id="skins"
                   role="tabpanel"
-                  aria-labelledby="contact-tab"
+                  aria-labelledby="skins"
                   tabindex="0"
                 >
-                  I'm OPTIONS
+                  <div id="skins-list"></div>
+                </div>
+
+                <div
+                  class="tab-pane fade"
+                  id="info"
+                  role="tabpanel"
+                  aria-labelledby="info"
+                  tabindex="0"
+                >
+                  <h2>How to play:</h2>
+                  <p>
+                    Click the mushroom to earn points.<br>
+                    Use points to purchase upgrades and skins<br>
+                    Purchase 5 of an upgrade to unlock the next one<br>
+                    Grow your mushroom garden!<br>
+                  </p>
                 </div>
               </div>
             </div>
@@ -130,24 +183,54 @@
       </div>
     </main>
 
+    <!-- Images along top of footer -->
+    <div class="footer-image-row d-flex justify-content-around align-items-end">
+      <img src="{{ url_for('static', filename='images/mariomushroom.png') }}" class="locked-image" point-threshold="10">
+      <img src="{{ url_for('static', filename='images/minishroom.png') }}" class="locked-image" point-threshold="100">
+      <img src="{{ url_for('static', filename='images/megashroom.png') }}" class="locked-image" point-threshold="300">
+      <img src="{{ url_for('static', filename='images/minecraftmushroom.png') }}" class="locked-image" point-threshold="500">
+      <img src="{{ url_for('static', filename='images/brownmushroomminecraft.png') }}" class="locked-image" point-threshold="1000">
+      <img src="{{ url_for('static', filename='images/sdvcommonmush.png') }}" class="locked-image" point-threshold="2000">
+      <img src="{{ url_for('static', filename='images/sdvmorel.png') }}" class="locked-image" point-threshold="5000">
+      <img src="{{ url_for('static', filename='images/sdvchantrelle.png') }}" class="locked-image" point-threshold="10000">
+      <img src="{{ url_for('static', filename='images/sdvredmush.png') }}" class="locked-image" point-threshold="20000">
+      <img src="{{ url_for('static', filename='images/sdvlavacap.png') }}" class="locked-image" point-threshold="50000">
+      <img src="{{ url_for('static', filename='images/mrmushroom.png') }}" class="locked-image" point-threshold="100000">
+    </div>
+
     <!-- Footer: Information at the bottom of the page -->
-    <footer class="bg-dark text-white text-center py-4 mt-5">
+    <footer class="text-white text-center py-4">
       <div class="container">
         <p>&copy; 2025 Mycelium Rising inc. All rights reserved.</p>
       </div>
     </footer>
 
     <!-- Flask-rendered urls -->
-     <script>
+    <script>
         const images = {
-          smallmush : "{{ url_for('static', filename='images/mush1.png')}}"
+          smallmush : "{{ url_for('static', filename='images/mush1.png')}}",
+          scythe : "{{ url_for('static', filename='images/scythe.png')}}",
+          tractor : "{{ url_for('static', filename='images/tractor.png')}}",
+          bed : "{{ url_for('static', filename='images/mushroombedpixel.png')}}",
+          farm : "{{ url_for('static', filename='images/pixelfarm.png')}}",
+          lab : "{{ url_for('static', filename='images/lab.png')}}",
+          terrarium : "{{ url_for('static', filename='images/terrarium.png')}}",
+          greenhouse : "{{ url_for('static', filename='images/greenhouse.png')}}",
+          clipper : "{{ url_for('static', filename='images/clipper.png')}}",
+          volunteer : "{{ url_for('static', filename='images/volunteer.png')}}",
+          defaultMushroom: "{{ url_for('static', filename='images/pngmushroom.png')}}",
+          galaxy: "{{ url_for('static', filename='images/galaxyshroom.png')}}",
+          candy: "{{ url_for('static', filename='images/candyshroom.png')}}",
+          golden: "{{ url_for('static', filename='images/goldshroom.png')}}",
+          groot: "{{ url_for('static', filename='images/grootshroom.png')}}"
         }
-     </script>
+    </script>
 
     <!-- Bootstrap JS: Required for interactive components like the mobile menu -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Custom JS: Your own interactive code goes here -->
+    <script src="{{url_for('static', filename='helper.js')}}"></script>
     <script src="{{url_for('static', filename='script.js')}}"></script>
   </body>
 </html>
