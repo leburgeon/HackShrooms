@@ -74,7 +74,7 @@ var Game = {
         },
         {
             name: "Golden",
-            baseCost: 15000,
+            baseCost: 10000,
             owned: false
         }
     ]
@@ -219,10 +219,9 @@ function buildOptionsCard(skin, idx, images) {
                         <button 
                             id="skin-${idx}" 
                             onclick="buySkin(${idx})"
-                            ${skin.owned ? "disabled" : ""}
-                        >
-                            ${skin.owned ? "✓" : skin.cost}
-                        </button>
+                            ${skin.owned ? "disabled" : ""}>
+                            ${skin.baseCost}
+                            </button>
                     </div>
                 </div>
             </div>
@@ -258,8 +257,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const skinImages = [
         images.galaxy,
         images.candy,
-        images.golden,
-        images.groot
+        images.groot,
+        images.golden
     ]
     const optionsContainer = document.getElementById("skins-list");
     Game["skins"].forEach((name, idx) => {
