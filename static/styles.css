@@ -26,6 +26,16 @@ body {
     text-align: center;
 }
 
+.game-col {
+
+    background: linear-gradient(145deg, #2E4109ff, #1e1e1e);
+    border: 4px solid #6B692Aff;
+    border-radius: 18px;
+    padding: 20px;
+    min-height: 500px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
+}
+
 /* footer styles apply only to the <footer> element */
 footer {
     /* margin-top: auto helps push the footer to the bottom if there's little content */
