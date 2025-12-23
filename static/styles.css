@@ -145,3 +145,10 @@ footer {
     from { left: 7%; }
     to { left: 90%; }
   }
+
+  #musicToggle {
+    position: fixed;   
+    top: 10px;         
+    left: 10px;        
+    z-index: 9999;
+}
