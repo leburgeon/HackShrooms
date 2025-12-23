@@ -1,6 +1,6 @@
 [
   {
-    "username": "Player01",
+    "username": "testPlayer01",
     "mushrooms": 0,
     "lifetimeMushrooms": 0,
     "upgrades": {
@@ -9,7 +9,7 @@
     }
   },
   {
-    "username": "Player02",
+    "username": "testPlayer02",
     "mushrooms": 0,
     "lifetimeMushrooms": 0,
     "upgrades": {
@@ -18,5 +18,3 @@
     }
   }
 ]
-
-
