@@ -413,7 +413,7 @@ function toggleMusic() {
     var btn = document.getElementById("musicToggle");
 
     if (bgMusic.paused) {
-        bgMusic.volume = 0.2; 
+        bgMusic.volume = 0.1; 
         bgMusic.play();
         btn.innerHTML = "Pause Music";
         btn.style.backgroundColor = "#ff6b6b"; 
