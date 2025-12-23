@@ -63,10 +63,11 @@ function calculateMushroomPerClick() {
 setInterval(autoMushroomGenerator, 1000);
 
 function autoMushroomGenerator() {
-    Game["mushrooms"] += mushroomPerSecond
-    Game["lifetimeMushrooms"] += mushroomPerSecond
+    Game["mushrooms"] += mushroomPerSecond; 
+    Game["lifetimeMushrooms"] += mushroomPerSecond;
 
     updateMushroomsCount()
+    updateUnlocks();
 }
 
 // window.onload = function () {
@@ -88,7 +89,8 @@ function mushroomClick() {
     Game["mushrooms"] += mushroomPerClick;
     Game["lifetimeMushrooms"] += mushroomPerClick;
 
-    updateMushroomsCount()
+    updateMushroomsCount();
+    updateUnlocks();
 }
 
 function upgradeCard(idx) {
@@ -116,7 +118,8 @@ function upgradeCard(idx) {
         
         upgradeCost.innerHTML = Game["upgrades"][type][id]["cost"]
 
-        updateMushroomsCount()
+        updateMushroomsCount();
+        updateUnlocks();
     }
 }
 
@@ -234,10 +237,10 @@ async function testfunc() {
 
 function updateUnlocks() {
 
-    const images = document.querySelectorAll('.locked-img');
+    const images = document.querySelectorAll('.locked-image');
     images.forEach(img => {
     
-    // Get the threshold value from the 'data-threshold' attribute
+        // Get the threshold value from the 'point-threshold' attribute in the HTML
         const threshold = parseInt(img.getAttribute('point-threshold'));
 
         if (Game["mushrooms"] >= threshold) {
