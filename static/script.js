@@ -143,7 +143,7 @@ function createMushroom() {
 
     // Spawn mushroom on screen
     const mush = document.createElement('img');
-    mush.src = "/images/mush1.png";
+    mush.src = images.smallmush
     mush.classList.add('mushroom');
 
     // Use random co-ordinates

@@ -43,7 +43,7 @@
               </div>
             </div>
             <div id = "main-mushroom" onclick="mushroomClick()">
-              <img id="main-mushroom-img" src="../images/pngmushroom.png"/>
+              <img id="main-mushroom-img" src="{{ url_for('static', filename='images/pngmushroom.png') }}" />
             </div>
           </div>
           <div class="col">
@@ -82,6 +82,13 @@
         <p>&copy; 2025 Mycelium Rising inc. All rights reserved.</p>
       </div>
     </footer>
+
+    <!-- Flask-rendered urls -->
+     <script>
+        const images = {
+          smallmush : "{{ url_for('static', filename='images/mush1.png')}}"
+        }
+     </script>
 
     <!-- Bootstrap JS: Required for interactive components like the mobile menu -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
