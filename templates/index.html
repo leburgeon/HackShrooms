@@ -39,6 +39,11 @@
               <div id="main-mushroom" onclick="mushroomClick()">
                 <img id="main-mushroom-img" src="{{ url_for('static', filename='images/pngmushroom.png') }}" />
               </div>
+              <div>
+                <h1 onclick="testfunc()">
+                  test
+                </h1>
+              </div>
             </div>
           </div>
 
@@ -162,6 +167,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Custom JS: Your own interactive code goes here -->
+    <script src="{{url_for('static', filename='helper.js')}}"></script>
     <script src="{{url_for('static', filename='script.js')}}"></script>
   </body>
 </html>
