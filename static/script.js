@@ -236,7 +236,7 @@ function buildOptionsCard(skin, idx, images) {
                     <div class="col">
                         <button 
                             id="skin-${idx}" 
-                            onclick="buySkin(${idx})"
+                            onclick="purchaseSkin(${idx})"
                             ${skin.owned ? "disabled" : ""}>
                             ${skin.baseCost}
                             </button>
