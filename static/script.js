@@ -55,7 +55,41 @@ var Game = {
                 baseValue: 5
             }
         ]
-    }
+    },
+    skins: [
+        {
+            name: "Galaxy",
+            baseCost: 1000
+        },
+        {
+            name: "Candyland",
+            baseCost: 3000
+        },
+        {
+            name: "Groot",
+            baseCost: 5000
+        },
+        {
+            name: "Magma",
+            baseCost: 7000
+        },
+        {
+            name: "Ice",
+            baseCost: 9000
+        },
+        {
+            name: "Tech",
+            baseCost: 10000
+        },
+        {
+            name: "Royal",
+            baseCost: 12000
+        },
+        {
+            name: "Golden",
+            baseCost: 15000
+        }
+    ]
 }
 
 var mushroomPerSecond = 0
