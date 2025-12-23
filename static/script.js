@@ -121,11 +121,6 @@ function upgradeCard(idx) {
     }
 }
 
-// const upgradeImages = {
-//     "auto": [images.bed, images.farm, images.lab],
-//     "clicker": [images.scythe, images.tractor]
-// }
-
 function buildUpgradeCard(upgrade, type, idx) {
     const card = document.createElement("div");
     card.classList = "card";
@@ -136,6 +131,7 @@ function buildUpgradeCard(upgrade, type, idx) {
             <div class="container text-center">
                 <div class="row align-items-start">
                     <div class="col">
+                        <img src=${upgradeImages[type][idx]}/>
                         <img src=${upgradeImages[type][idx]}/>
                     </div>
                     <div class="col">
@@ -181,6 +177,7 @@ document.addEventListener("DOMContentLoaded", function () {
     calculateMushroomPerSecond()
     calculateMushroomPerClick()
 
+
 })
 
 
@@ -200,14 +197,8 @@ function createMushroom() {
     mush.classList.add('mushroom');
 
     // Use random co-ordinates
-    leftX = 100
-    rightX = 800
-    bottomY = 0
-    topY = 600
-
-    const x = Math.random() * (rightX - leftX);
-    const y = Math.random() * (topY - bottomY);
-
+    const x = Math.random() * (window.innerWidth - 256);
+    const y = Math.random() * (window.innerHeight - 256);
     mush.style.left = x + 'px';
     mush.style.top = y + 'px';
 
