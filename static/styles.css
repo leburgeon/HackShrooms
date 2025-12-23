@@ -41,7 +41,14 @@ body {
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
 }
 
-/* footer styles apply only to the <footer> element */
+.nav-link {
+    color: rgb(238, 200, 216);
+}
+
+.nav-link:hover {
+    color: rgb(245, 119, 171);
+}
+
 footer {
     /* margin-top: auto helps push the footer to the bottom if there's little content */
     margin-top: auto;
