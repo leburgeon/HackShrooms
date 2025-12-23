@@ -196,8 +196,14 @@ function createMushroom() {
     mush.classList.add('mushroom');
 
     // Use random co-ordinates
-    const x = Math.random() * (window.innerWidth - 256);
-    const y = Math.random() * (window.innerHeight - 256);
+    leftX = 100
+    rightX = 800
+    bottomY = 0
+    topY = 600
+
+    const x = Math.random() * (rightX - leftX);
+    const y = Math.random() * (topY - bottomY);
+
     mush.style.left = x + 'px';
     mush.style.top = y + 'px';
 
