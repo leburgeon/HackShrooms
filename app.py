@@ -10,7 +10,7 @@ def hello_world():
     return render_template('index.html')
 
 
-@app.route('/saveplayerdata', methods=['POST'])
+@app.route('/api/saveplayerdata', methods=['POST'])
 def savedata():
     """ Saves player data to the database """
     player_data = request.json
@@ -18,7 +18,7 @@ def savedata():
     return "Player data successfully uploaded", 200
 
 
-@app.route('/getplayerdata/<string:username>', methods=['GET'])
+@app.route('/api/getplayerdata/<string:username>', methods=['GET'])
 def getplayerdata(username):
     """ Retrieves player data from the database """
     player_data = load_player_data(username)
