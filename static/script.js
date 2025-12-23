@@ -353,10 +353,27 @@ function updateUnlocks() {
 
 }
 
+setInterval(updateUnlocks, 1000); 
+
+
 function playAudio() {
     var audio = document.getElementById("captainSound");
     audio.volume = 0.2;
     audio.play();
 }
 
-setInterval(updateUnlocks, 1000); 
+function toggleMusic() {
+    var bgMusic = document.getElementById("bgMusic");
+    var btn = document.getElementById("musicToggle");
+
+    if (bgMusic.paused) {
+        bgMusic.volume = 0.2; 
+        bgMusic.play();
+        btn.innerHTML = "Pause Music";
+        btn.style.backgroundColor = "#ff6b6b"; 
+    } else {
+        bgMusic.pause();
+        btn.innerHTML = "Play Music";
+        btn.style.backgroundColor = "#ffcf00"; // 
+    }
+}
