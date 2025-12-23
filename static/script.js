@@ -217,6 +217,42 @@ function buildUpgradeCard(upgrade, type, idx, images) {
     return content
 }
 
+function buildOptionsCard(skin, idx, images) {
+    const card = document.createElement("div");
+    card.classList = "card";
+
+    const content = `
+    <div class="card">
+        <div class="card-body">
+            <div class="container text-center">
+                <div class="row align-items-start">
+                    <div class="col">
+                        <img src="${images[idx]}" height="50px"/>
+                    </div>
+                    <div class="col">
+                        ${skin.name}
+                    </div>
+                    <div class="col" id="skin-${idx}-status">
+                        ${skin.owned ? "Owned" : "Locked"}
+                    </div>
+                    <div class="col">
+                        <button 
+                            id="skin-${idx}" 
+                            onclick="buySkin(${idx})"
+                            ${skin.owned ? "disabled" : ""}
+                        >
+                            ${skin.owned ? "✓" : skin.cost}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    `;
+
+    return content;
+}
+
 document.addEventListener("DOMContentLoaded", function () {
     console.log("page loaded")
 
@@ -239,10 +275,12 @@ document.addEventListener("DOMContentLoaded", function () {
         clickerUpgradeContainer.innerHTML += content;
     })
 
+    Game["skins"].forEach((name, idx) => {
+        content = buildOptionsCard(name, idx, skinImages)
+    })
+
     calculateMushroomPerSecond()
     calculateMushroomPerClick()
-
-
 })
 
 
