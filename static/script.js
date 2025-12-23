@@ -9,33 +9,65 @@ var Game = {
         {
             name: "Grow Bed",
             lvl: 0,
-            cost: 10
+            baseCost: 10,
+            cost: 10,
+            baseValue: 1
         },
         {
             name: "Farm",
             lvl: 0,
-            cost: 100
+            baseCost: 100,
+            cost: 100,
+            baseValue: 10
         },
         {
             name: "Laboratory",
             lvl: 0,
-            cost: 1000
+            baseCost: 1000,
+            cost: 1000,
+            baseValue: 100
         }],
         clicker: [
         {
             name: "Scythe",
             lvl: 0,
-            cost: 10
+            baseCost: 10,
+            cost: 10,
+            baseValue: 1
         },
         {
             name: "Tractor",
             lvl: 0,
-            cost: 100
+            baseCost: 100,
+            cost: 100,
+            baseValue: 5
         }]
     }
 }
 
-var num = 0
+var mushroomPerSecond = 0
+var mushroomPerClick = 1
+
+function calculateMushroomPerSecond() {
+    Game["upgrades"]["auto"].forEach((upgrade) => {
+        mushroomPerSecond += (upgrade["baseValue"] * upgrade["lvl"])
+    })
+}
+
+function calculateMushroomPerClick() {
+    Game["upgrades"]["clicker"].forEach((upgrade) => {
+        mushroomPerClick += (upgrade["baseValue"] * upgrade["lvl"])
+    })
+}
+
+setInterval(autoMushroomGenerator, 1000); 
+
+function autoMushroomGenerator() {
+    Game["mushrooms"] += mushroomPerSecond
+    Game["lifetimeMushrooms"] += mushroomPerSecond
+
+    updateMushroomsCount()
+}
 
 // window.onload = function () {
 //         var name = prompt("What is your name");
@@ -47,46 +79,54 @@ var num = 0
 
 var mushroom = document.getElementById("main-mushroom");
 
-function mushroomClick() { 
-    num += 1;
-
+function updateMushroomsCount() {
     var numbers = document.getElementById("numbers");
     
-    //upgrade level for printing
-    var upgradeLevel = document.getElementById("upgradeLevel");
+    numbers.innerHTML = Game["mushrooms"];
+}
+
+function mushroomClick() {
+    Game["mushrooms"] += mushroomPerClick;
+    Game["lifetimeMushrooms"] += mushroomPerClick;
+
+    updateMushroomsCount()
+}
+
+function upgradeCard(idx) {
+    idInfo = idx.split("-")
+    type = idInfo[0]
+    id = Number(idInfo[1])
     
-    numbers.innerHTML = num;      
-    //automatic Granny upgrade to 2x
-    if(num >= 30 ){
-        num += 2;
-        upgradeLevel.innerHTML = "Granny Level";
-    }
+    if (Game["mushrooms"] >= Game["upgrades"][type][id]["cost"]) {
+        var upgradeLvl = document.getElementById(idx + "-lvl");
+        var upgradeCost = document.getElementById(idx);
 
-    //automatic factory upgrade to 10x
-    if(num >= 500) {
-        num += 10;
-        upgradeLevel.innerHTML = "Factory Level";
-    }
+        Game["upgrades"][type][id]["lvl"] += 1
+        upgradeLvl.innerHTML = Game["upgrades"][type][id]["lvl"]
 
-    //automatic plant upgrade to 30x
-    if(num >= 1000) {
-        num += 30;
-        upgradeLevel.innerHTML = "Plant Level";
-    }
+        Game["mushrooms"] -= Game["upgrades"][type][id]["cost"]
 
-    //automatic super factory upgrade to 1000x
-    if(num >= 100000) {
-        num += 1000;
-        upgradeLevel.innerHTML = "Super-Plant Level";
+        if (type == "auto") {
+            mushroomPerSecond += Game["upgrades"][type][id]["baseValue"]
+            Game["upgrades"][type][id]["cost"] = Math.ceil(Game["upgrades"][type][id]["baseCost"] * (1.15 ** Game["upgrades"][type][id]["lvl"]))
+        }
+        else {
+            mushroomPerClick += Game["upgrades"][type][id]["baseValue"]
+            Game["upgrades"][type][id]["cost"] = Math.ceil(Game["upgrades"][type][id]["baseCost"] * (2 ** Game["upgrades"][type][id]["lvl"]))
+        }
+        
+        upgradeCost.innerHTML = Game["upgrades"][type][id]["cost"]
+
+        updateMushroomsCount()
     }
 }
 
 const upgradeImages = {
-    "Auto": [],
-    "Clicker": [images.scythe, images.tractor]
+    "auto": [],
+    "clicker": [images.scythe, images.tractor]
 }
 
-function buildUpgradeCard(upgrade) {
+function buildUpgradeCard(upgrade, type, idx) {
     const card = document.createElement("div");
     card.classList = "card";
 
@@ -101,11 +141,11 @@ function buildUpgradeCard(upgrade) {
                     <div class="col">
                         ${upgrade.name}
                     </div>
-                    <div class="col">
+                    <div class="col" id=${type}-${idx}-lvl>
                         ${upgrade.lvl}
                     </div>
                     <div class="col">
-                        (button) ${upgrade.cost}
+                        <button id=${type}-${idx} onclick="upgradeCard(id)">${upgrade.cost}</button>
                     </div>
                 </div>
             </div>
@@ -119,19 +159,25 @@ function buildUpgradeCard(upgrade) {
 document.addEventListener("DOMContentLoaded", function () {
     console.log("page loaded")
 
+    // Load player data if any here
+
     const autoUpgradeContainer = document.getElementById("auto-upgrades-list");
     
-    Game["upgrades"]["auto"].forEach((upgrade) => {
-        content = buildUpgradeCard(upgrade)
+    Game["upgrades"]["auto"].forEach((upgrade, idx) => {
+        content = buildUpgradeCard(upgrade, "auto", idx)
         autoUpgradeContainer.innerHTML += content;
     })
 
     const clickerUpgradeContainer = document.getElementById("clicker-upgrades-list");
-    Game["upgrades"]["clicker"].forEach((upgrade) => {
-        content = buildUpgradeCard(upgrade)
+    Game["upgrades"]["clicker"].forEach((upgrade, idx) => {
+        content = buildUpgradeCard(upgrade, "clicker", idx)
         clickerUpgradeContainer.innerHTML += content;
     })
+
+    calculateMushroomPerSecond()
+    calculateMushroomPerClick()
 })
+
 
 setInterval(spawnMushroomMiniGame, 15000); 
 
@@ -157,8 +203,10 @@ function createMushroom() {
     // Add points and remove mushroom on click
     mush.addEventListener('click', () => {
         
-        num += 100; 
-        numbers.innerHTML = num;      
+        mushroomsToAdd = Math.max(Math.ceil(mushroomPerSecond * 10), 50)
+        Game["mushrooms"] += mushroomsToAdd;
+        Game["lifetimeMushrooms"] += mushroomsToAdd;
+        numbers.innerHTML = Game["mushrooms"];
         mush.classList.add('mushroom');
         mush.remove();
             
