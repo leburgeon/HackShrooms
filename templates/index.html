@@ -21,6 +21,9 @@
       </div>
     </section>
 
+  <!-- Captain toad moving across screen -->
+    <img src="{{ url_for('static', filename='images/captainwalking.gif') }}" class="captain-toad"/>
+
   <!-- Main Content: The primary information on your page -->
     <main class="py-5">
       <div class="container text-center">
@@ -134,6 +137,8 @@
       </div>
     </main>
   
+    <p>The current count is: <span id="display-number">0</span></p>
+
     <!-- Images along top of footer -->
     <div class="footer-image-row d-flex justify-content-around align-items-end">
       <img src="{{ url_for('static', filename='images/mariomushroom.png') }}" class="locked-image" point-threshold="10">
