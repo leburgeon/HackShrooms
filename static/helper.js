@@ -62,7 +62,6 @@ async function handleLogin () {
 }
 
 function handleSavePlayerData() {
+    console.log(Game)
     savePlayerData(Game)
 }
-
-handleLogin()
