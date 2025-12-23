@@ -90,13 +90,14 @@ footer {
     width: 50px;
     height: 50px;
     cursor: pointer;
-    animation: fadeOut 9s forwards; 
+    animation: wobble 9s forwards;
 }
 
-@keyframes fadeOut {
-    0% {scale: 0; opacity: 0;}
-    30% {scale: 1; opacity: 1;}
-    100% {scale: 0; opacity: 0;}
+@keyframes wobble {
+    0% { transform: scale(0) rotate(-20deg); opacity: 0; }
+    30% { transform: scale(1) rotate(20deg); opacity: 1; }
+    60% { transform: scale(1) rotate(-20deg); opacity: 0.5; }
+    100% { transform: scale(0) rotate(0deg); opacity: 0; }
 }
 
 .footer-image-row {
