@@ -52,7 +52,7 @@ footer {
     width: 50px;
     height: 50px;
     cursor: pointer;
-    animation: fadeOut 5s forwards; 
+    animation: fadeOut 9s forwards; 
 }
 
 @keyframes fadeOut {
