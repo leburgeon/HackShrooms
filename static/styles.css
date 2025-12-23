@@ -43,8 +43,9 @@ footer {
 }
 
 #main-mushroom-img {
-    width: 200px;
+    width: 300px;
     text-align: center;
+    margin-top: 20px;
 }
 
 .mushroom {
