@@ -72,6 +72,11 @@ var Game = {
     },
     skins: [
         {
+            name: "Default",
+            baseCost: 0,
+            owned: true
+        },
+        {
             name: "Galaxy",
             baseCost: 1000,
             owned: false
@@ -236,10 +241,9 @@ function buildOptionsCard(skin, idx, images) {
                     <div class="col">
                         <button 
                             id="skin-${idx}" 
-                            onclick="purchaseSkin(${idx})"
-                            ${skin.owned ? "disabled" : ""}>
-                            ${skin.baseCost}
-                            </button>
+                            onclick="purchaseSkin(${idx})">
+                            ${skin.owned ? "Select" : skin.baseCost}
+                        </button>
                     </div>
                 </div>
             </div>
@@ -252,18 +256,18 @@ function buildOptionsCard(skin, idx, images) {
 
 function purchaseSkin(idx) {
     const skin = Game.skins[idx];
-    if (skin.owned) return;
     if (Game.mushrooms < skin.baseCost) return;
 
     Game.mushrooms -= skin.baseCost;
+    skin.baseCost = 0
     skin.owned = true;
     document.getElementById(`skin-${idx}-status`).innerHTML = "Owned";
 
     const btn = document.getElementById(`skin-${idx}`);
-    btn.innerHTML = "✓";
-    btn.disabled = true;
+    btn.innerHTML = "Select";
 
     const skinImages = [
+        images.defaultMushroom,
         images.galaxy,
         images.candy,
         images.groot,
@@ -303,11 +307,13 @@ document.addEventListener("DOMContentLoaded", function () {
     updateUpgrade("clicker", 0)
 
     const skinImages = [
+        images.defaultMushroom,
         images.galaxy,
         images.candy,
         images.groot,
         images.golden
     ]
+
     const optionsContainer = document.getElementById("skins-list");
     Game["skins"].forEach((name, idx) => {
         content = buildOptionsCard(name, idx, skinImages)
