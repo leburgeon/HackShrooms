@@ -388,7 +388,6 @@ function updateUnlocks() {
 
         if (Game["mushrooms"] >= threshold) {
         img.classList.add('unlocked');
-        console.log(`Unlocked: ${img.src}`); // Debugging line to see it work
         }
     });
 
