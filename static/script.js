@@ -226,8 +226,3 @@ function createMushroom() {
     document.body.appendChild(mush);
 }
 
-async function testfunct() {
-    console.log('testing function')
-    playerdata = await helper.getPlayerData('test')
-    console.log(playerdata)
-}
