@@ -38,13 +38,19 @@ body {
 }
 
 .game-col {
-
     background: linear-gradient(170deg, #2E4109ff, #1e1e1e);
     border: 4px solid #6B692Aff;
     border-radius: 18px;
     padding: 20px;
     min-height: 500px;
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
+}
+
+button {
+    color: #1e1e1e;
+    background-color: #FFDE66;
+    border-color: #ccaf43;
+    border-radius: 10px;
 }
 
 .nav-link {
