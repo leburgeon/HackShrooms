@@ -20,6 +20,12 @@ body {
     background-color: #cfa87b;
 }
 
+.hero {
+    background-color: #6E374Eff;
+    color: white;
+    text-align: center;
+}
+
 /* footer styles apply only to the <footer> element */
 footer {
     /* margin-top: auto helps push the footer to the bottom if there's little content */
