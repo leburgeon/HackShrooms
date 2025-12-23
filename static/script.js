@@ -59,35 +59,43 @@ var Game = {
     skins: [
         {
             name: "Galaxy",
-            baseCost: 1000
+            baseCost: 1000,
+            owned: false
         },
         {
             name: "Candyland",
-            baseCost: 3000
+            baseCost: 3000,
+            owned: false
         },
         {
             name: "Groot",
-            baseCost: 5000
+            baseCost: 5000,
+            owned: false
         },
         {
             name: "Magma",
-            baseCost: 7000
+            baseCost: 7000,
+            owned: false
         },
         {
             name: "Ice",
-            baseCost: 9000
+            baseCost: 9000,
+            owned: false
         },
         {
             name: "Tech",
-            baseCost: 10000
+            baseCost: 10000,
+            owned: false
         },
         {
             name: "Royal",
-            baseCost: 12000
+            baseCost: 12000,
+            owned: false
         },
         {
             name: "Golden",
-            baseCost: 15000
+            baseCost: 15000,
+            owned: false
         }
     ]
 }
