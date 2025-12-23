@@ -73,26 +73,6 @@ var Game = {
             owned: false
         },
         {
-            name: "Magma",
-            baseCost: 7000,
-            owned: false
-        },
-        {
-            name: "Ice",
-            baseCost: 9000,
-            owned: false
-        },
-        {
-            name: "Tech",
-            baseCost: 10000,
-            owned: false
-        },
-        {
-            name: "Royal",
-            baseCost: 12000,
-            owned: false
-        },
-        {
             name: "Golden",
             baseCost: 15000,
             owned: false
@@ -275,8 +255,16 @@ document.addEventListener("DOMContentLoaded", function () {
         clickerUpgradeContainer.innerHTML += content;
     })
 
+    const skinImages = [
+        images.galaxy,
+        images.candy,
+        images.golden,
+        images.groot
+    ]
+    const optionsContainer = document.getElementById("skins-list");
     Game["skins"].forEach((name, idx) => {
         content = buildOptionsCard(name, idx, skinImages)
+        optionsContainer.innerHTML += content;
     })
 
     calculateMushroomPerSecond()
