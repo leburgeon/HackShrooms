@@ -1,4 +1,4 @@
-// import helper from "./helper";
+import helper from helper
 
 //initial number of cookies    
 var Game = {
@@ -170,4 +170,10 @@ function createMushroom() {
 
     // Add to page
     document.body.appendChild(mush);
+}
+
+async function testfunct() {
+    console.log('testing function')
+    playerdata = await helper.getPlayerData('test')
+    console.log(playerdata)
 }
