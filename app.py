@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, jsonify
 from utils import save_player_data, load_player_data, save_player_data
 
 
@@ -20,9 +20,11 @@ def savedata():
 
 @app.route('/api/getplayerdata/<string:username>', methods=['GET'])
 def getplayerdata(username):
+    print('CALLED')
     """ Retrieves player data from the database """
     player_data = load_player_data(username)
-    return player_data, 200
+    print(player_data)
+    return jsonify(player_data)
 
 
 if __name__ == "__main__":
