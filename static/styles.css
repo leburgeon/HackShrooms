@@ -45,6 +45,7 @@ body {
 footer {
     /* margin-top: auto helps push the footer to the bottom if there's little content */
     margin-top: auto;
+    background-color: #6E374Eff;
 }
 
 #main-mushroom-img {
