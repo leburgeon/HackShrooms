@@ -119,6 +119,21 @@ footer {
   opacity: 1;
 }
 
+#upgrade-imgs img {
+  height: 50px;
+  display: block; 
+  object-fit:cover;
+
+  filter: brightness(0);
+  opacity: 0.5;
+  transition: filter 0.5s ease, opacity 0.5s ease;
+}
+
+#upgrade-imgs img.unlocked {
+  filter: brightness(1);
+  opacity: 1;
+}
+
 #auto-upgrades-list {
   height: 387px;
   overflow-y: scroll;

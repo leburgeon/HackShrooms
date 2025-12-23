@@ -41,18 +41,32 @@ var Game = {
         ],
         clicker: [
             {
-                name: "Scythe",
+                name: "Clipper",
                 lvl: 0,
                 baseCost: 10,
                 cost: 10,
                 baseValue: 1
             },
             {
-                name: "Tractor",
+                name: "Scythe",
                 lvl: 0,
                 baseCost: 100,
                 cost: 100,
                 baseValue: 5
+            },
+            {
+                name: "Tractor",
+                lvl: 0,
+                baseCost: 1000,
+                cost: 1000,
+                baseValue: 20
+            },
+            {
+                name: "Volunteer",
+                lvl: 0,
+                baseCost: 10000,
+                cost: 10000,
+                baseValue: 50
             }
         ]
     },
@@ -153,21 +167,25 @@ function upgradeCard(idx) {
 
         if (type == "auto") {
             mushroomPerSecond += Game["upgrades"][type][id]["baseValue"]
-            Game["upgrades"][type][id]["cost"] = Math.ceil(Game["upgrades"][type][id]["baseCost"] * (1.15 ** Game["upgrades"][type][id]["lvl"]))
+            Game["upgrades"][type][id]["cost"] = Math.ceil(Game["upgrades"][type][id]["baseCost"] * (1.2 ** Game["upgrades"][type][id]["lvl"]))
         }
         else {
             mushroomPerClick += Game["upgrades"][type][id]["baseValue"]
-            Game["upgrades"][type][id]["cost"] = Math.ceil(Game["upgrades"][type][id]["baseCost"] * (2 ** Game["upgrades"][type][id]["lvl"]))
+            Game["upgrades"][type][id]["cost"] = Math.ceil(Game["upgrades"][type][id]["baseCost"] * (1.4 ** Game["upgrades"][type][id]["lvl"]))
         }
         
         upgradeCost.innerHTML = Game["upgrades"][type][id]["cost"]
 
         updateMushroomsCount();
         updateUnlocks();
+
+        if (Game["upgrades"][type][id]["lvl"] == 5) {
+            updateUpgrade(type, id + 1)
+        }
     }
 }
 
-function buildUpgradeCard(upgrade, type, idx, images) {
+function buildUpgradeCard(type, idx, images) {
     const card = document.createElement("div");
     card.classList = "card";
 
@@ -175,18 +193,18 @@ function buildUpgradeCard(upgrade, type, idx, images) {
     <div class="card">
         <div class="card-body">
             <div class="container text-center">
-                <div class="row align-items-start">
-                    <div class="col">
-                        <img src=${images[type][idx]} height=50px/>
+                <div class="row align-items-start" id=${type}-${idx}-card>
+                    <div class="col" id="upgrade-imgs">
+                        <img src=${images[type][idx]} class="locked-upgrade"/>
                     </div>
                     <div class="col">
-                        ${upgrade.name}
+                        ???
                     </div>
                     <div class="col" id=${type}-${idx}-lvl>
-                        ${upgrade.lvl}
+                        ???
                     </div>
                     <div class="col">
-                        <button id=${type}-${idx} onclick="upgradeCard(id)">${upgrade.cost}</button>
+                        <button id=${type}-${idx} onclick="upgradeCard(id)" disabled=true>???</button>
                     </div>
                 </div>
             </div>
@@ -237,22 +255,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const upgradeImages = {
     "auto": [images.bed, images.terrarium, images.greenhouse, images.farm, images.lab],
-    "clicker": [images.scythe, images.tractor]
+    "clicker": [images.clipper, images.scythe, images.tractor, images.volunteer]
     }
+
     // Load player data if any here
 
     const autoUpgradeContainer = document.getElementById("auto-upgrades-list");
     
     Game["upgrades"]["auto"].forEach((upgrade, idx) => {
-        content = buildUpgradeCard(upgrade, "auto", idx, upgradeImages)
+        content = buildUpgradeCard("auto", idx, upgradeImages)
         autoUpgradeContainer.innerHTML += content;
     })
 
     const clickerUpgradeContainer = document.getElementById("clicker-upgrades-list");
     Game["upgrades"]["clicker"].forEach((upgrade, idx) => {
-        content = buildUpgradeCard(upgrade, "clicker", idx, upgradeImages)
+        content = buildUpgradeCard("clicker", idx, upgradeImages)
         clickerUpgradeContainer.innerHTML += content;
     })
+
+    updateUpgrade("auto", 0)
+    updateUpgrade("clicker", 0)
 
     const skinImages = [
         images.galaxy,
@@ -342,6 +364,24 @@ function updateUnlocks() {
 
 setInterval(updateUnlocks, 1000); 
 
+
+function updateUpgrade(type, id) {
+
+    var card = document.getElementById(type + "-" + id + "-card");
+
+    const image_parent = card.firstElementChild
+    const image = image_parent.firstElementChild
+    const name = image_parent.nextElementSibling
+    const level = name.nextElementSibling
+    const button_parent = level.nextElementSibling
+    const button = button_parent.firstElementChild
+
+    image.classList.add('unlocked');
+    name.innerHTML = Game["upgrades"][type][id]["name"]
+    level.innerHTML = 0
+    button.disabled = false
+    button.innerHTML = Game["upgrades"][type][id]["cost"]
+}
 
 function playAudio() {
     var audio = document.getElementById("captainSound");
