@@ -98,6 +98,15 @@ function updateMushroomsCount() {
     numbers.innerHTML = Game["mushrooms"];
 }
 
+function pulseMushroom() {
+
+    mushroom.style.transition = "transform 0.1s ease";
+    mushroom.style.transform = "scale(1.1)";
+    setTimeout(function() {
+        mushroom.style.transform = "scale(1)";
+    }, 100);
+}
+
 function mushroomClick() {
     Game["mushrooms"] += mushroomPerClick;
     Game["lifetimeMushrooms"] += mushroomPerClick;
