@@ -250,6 +250,25 @@ function buildOptionsCard(skin, idx, images) {
     return content;
 }
 
+function purchaseSkin(idx) {
+    const skin = Game.skins[idx];
+    if (skin.owned) return;
+    if (Game.mushrooms < skin.baseCost) return;
+
+    Game.mushrooms -= skin.baseCost;
+    skin.owned = true;
+    document.getElementById(`skin-${idx}-status`).innerHTML = "Owned";
+
+    const btn = document.getElementById(`skin-${idx}`);
+    btn.innerHTML = "✓";
+    btn.disabled = true;
+
+    mushroom = skinImages[skin.name]
+
+    updateMushroomsCount();
+    updateUnlocks();
+}
+
 document.addEventListener("DOMContentLoaded", function () {
     console.log("page loaded")
 
