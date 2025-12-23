@@ -60,7 +60,7 @@ function calculateMushroomPerClick() {
     })
 }
 
-setInterval(autoMushroomGenerator, 1000); 
+setInterval(autoMushroomGenerator, 1000);
 
 function autoMushroomGenerator() {
     Game["mushrooms"] += mushroomPerSecond
@@ -81,7 +81,6 @@ var mushroom = document.getElementById("main-mushroom");
 
 function updateMushroomsCount() {
     var numbers = document.getElementById("numbers");
-    
     numbers.innerHTML = Game["mushrooms"];
 }
 
@@ -232,3 +231,21 @@ async function testfunc() {
     const playerdata = await getPlayerData('test')
     console.log(playerdata)
 }
+
+function updateUnlocks() {
+
+    const images = document.querySelectorAll('.locked-img');
+    images.forEach(img => {
+    
+    // Get the threshold value from the 'data-threshold' attribute
+        const threshold = parseInt(img.getAttribute('point-threshold'));
+
+        if (Game["mushrooms"] >= threshold) {
+        img.classList.add('unlocked');
+        console.log(`Unlocked: ${img.src}`); // Debugging line to see it work
+        }
+    });
+
+}
+
+setInterval(updateUnlocks, 1000); 

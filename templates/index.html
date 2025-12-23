@@ -48,16 +48,6 @@
           </div>
 
           <div class="col game-col">
-            <div class="column1">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title">Garden</h5>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col game-col">
             <div class="column2">
               <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
@@ -143,9 +133,19 @@
         </div>
       </div>
     </main>
+  
+    <!-- Images along top of footer -->
+    <div class="footer-image-row d-flex justify-content-around align-items-end">
+      <img src="{{ url_for('static', filename='images/mariomushroom.png') }}" class="locked-image" point-threshold="10">
+      <img src="{{ url_for('static', filename='images/minecraftmushroom.png') }}" class="locked-image" point-threshold=200>
+      <img src="{{ url_for('static', filename='images/sdvcommonmush.png') }}" class="locked-image" point-threshold=300>
+      <img src="{{ url_for('static', filename='images/sdvredmush.png') }}" class="locked-image" point-threshold=400>
+      <img src="{{ url_for('static', filename='images/sdvlavacap.png') }}" class="locked-image" point-threshold=500>
+      <img src="{{ url_for('static', filename='images/mrmushroom.png') }}" class="locked-image" point-threshold=1000>
+    </div>
 
     <!-- Footer: Information at the bottom of the page -->
-    <footer class="bg-dark text-white text-center py-4 mt-5">
+    <footer class="bg-dark text-white text-center py-4">
       <div class="container">
         <p>&copy; 2025 Mycelium Rising inc. All rights reserved.</p>
       </div>

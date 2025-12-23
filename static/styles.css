@@ -43,7 +43,7 @@ footer {
 }
 
 #main-mushroom-img {
-    width: 300px;
+    width: 250px;
     text-align: center;
     margin-top: 20px;
 }
@@ -59,4 +59,24 @@ footer {
 @keyframes fadeOut {
     0% {scale: 1; opacity: 1;}
     100% {scale: 0; opacity: 0;}
+}
+
+.footer-image-row {
+  width: 100%;
+  line-height: 0;
+}
+
+.footer-image-row img {
+  height: 50px;
+  display: block; 
+  object-fit:cover;
+
+  filter: brightness(0);
+  opacity: 0.5;
+  transition: filter 0.5s ease, opacity 0.5s ease;
+}
+
+.footer-image-row img.unlocked {
+  filter: brightness(1);
+  opacity: 1;
 }
