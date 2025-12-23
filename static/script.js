@@ -1,4 +1,5 @@
 var Game = {
+    username: null,
     mushrooms: 0,
     lifetimeMushrooms: 0,
     upgrades: {
@@ -123,14 +124,6 @@ function autoMushroomGenerator() {
     updateMushroomsCount()
     updateUnlocks();
 }
-
-// window.onload = function () {
-//         var name = prompt("What is your name");
-        
-//         var space = document.getElementById("space");
-        
-//         space.innerHTML = name + "'s Bakery";
-// }
 
 var mushroom = document.getElementById("main-mushroom");
 
@@ -373,9 +366,16 @@ function createMushroom() {
 }
 
 async function testfunc() {
-    console.log('testing func')
-    const playerdata = await getPlayerData('test')
-    console.log(playerdata)
+    console.log('inside test function')
+
+    updatedata = {
+        username: 'testPlayffffffer01',
+        mushrooms: 696969
+    }
+
+    savePlayerData(updatedata)
+
+    console.log('test function over')
 }
 
 function updateUnlocks() {

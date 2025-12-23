@@ -12,6 +12,7 @@ def hello_world():
 
 @app.route('/api/saveplayerdata', methods=['POST'])
 def savedata():
+    print('CALLED')
     """ Saves player data to the database """
     player_data = request.json
     save_player_data(player_data)
@@ -20,7 +21,6 @@ def savedata():
 
 @app.route('/api/getplayerdata/<string:username>', methods=['GET'])
 def getplayerdata(username):
-    print('CALLED')
     """ Retrieves player data from the database """
     player_data = load_player_data(username)
     print(player_data)
