@@ -93,3 +93,15 @@ footer {
   filter: brightness(1);
   opacity: 1;
 }
+
+#auto-upgrades-list {
+  height: 387px;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+
+#clicker-upgrades-list {
+  height: 387px;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
