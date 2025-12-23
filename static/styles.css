@@ -38,12 +38,30 @@ body {
 }
 
 .game-col {
+    display: flexbox;
+    flex-direction: column;
     background: linear-gradient(170deg, #2E4109ff, #1e1e1e);
     border: 4px solid #6B692Aff;
     border-radius: 18px;
     padding: 20px;
-    min-height: 500px;
+    height: 500px;
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
+}
+
+.tab-content {
+    flex-grow: 1;
+}
+
+.tab-pane fade {
+    flex-grow: 1;
+}
+
+.column2 {
+    flex-grow: 1;
+}
+
+.col {
+    flex-grow: 1;
 }
 
 button {
@@ -101,50 +119,42 @@ footer {
 }
 
 .footer-image-row {
-  width: 100%;
-  line-height: 0;
+    width: 100%;
+    line-height: 0;
 }
 
 .footer-image-row img {
-  height: 50px;
-  display: block; 
-  object-fit:cover;
+    height: 50px;
+    display: block; 
+    object-fit:cover;
 
-  filter: brightness(0);
-  opacity: 0.5;
-  transition: filter 0.5s ease, opacity 0.5s ease;
+    filter: brightness(0);
+    opacity: 0.5;
+    transition: filter 0.5s ease, opacity 0.5s ease;
 }
 
 .footer-image-row img.unlocked {
-  filter: brightness(1);
-  opacity: 1;
+    filter: brightness(1);
+    opacity: 1;
 }
 
 #upgrade-imgs img {
-  height: 50px;
-  display: block; 
-  object-fit:cover;
+    height: 50px;
+    display: block; 
+    object-fit:cover;
 
-  filter: brightness(0);
-  opacity: 0.5;
-  transition: filter 0.5s ease, opacity 0.5s ease;
+    filter: brightness(0);
+    opacity: 0.5;
+    transition: filter 0.5s ease, opacity 0.5s ease;
 }
 
 #upgrade-imgs img.unlocked {
-  filter: brightness(1);
-  opacity: 1;
+    filter: brightness(1);
+    opacity: 1;
 }
 
-#auto-upgrades-list {
-  height: 387px;
-  overflow-y: scroll;
-  scroll-behavior: smooth;
-}
-
-#clicker-upgrades-list {
-  height: 387px;
-  overflow-y: scroll;
-  scroll-behavior: smooth;
+.scroll-list {
+    flex-grow: 1;
 }
 
 .captain-toad {
@@ -155,14 +165,14 @@ footer {
     height: 50px;
     
     animation: moveSideToSide 25s linear infinite alternate;
-  }
+    }
 
-  @keyframes moveSideToSide {
+@keyframes moveSideToSide {
     from { left: 7%; }
     to { left: 90%; }
-  }
+}
 
-  #musicToggle {
+#musicToggle {
     position: absolute;   
     top: 10px;         
     left: 10px;        
