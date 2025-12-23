@@ -90,14 +90,14 @@ footer {
     width: 50px;
     height: 50px;
     cursor: pointer;
-    animation: wobble 9s forwards;
+    animation: wobble 6s forwards;
 }
 
 @keyframes wobble {
     0% { transform: scale(0) rotate(-20deg); opacity: 0; }
     30% { transform: scale(1) rotate(20deg); opacity: 1; }
-    60% { transform: scale(1) rotate(-20deg); opacity: 0.5; }
-    100% { transform: scale(0) rotate(0deg); opacity: 0; }
+    60% { transform: scale(1) rotate(-20deg); }
+    100% { transform: scale(0) rotate(0deg); }
 }
 
 .footer-image-row {
