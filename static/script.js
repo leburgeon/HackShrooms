@@ -81,6 +81,10 @@ function mushroomClick() {
     }
 }
 
+const upgradeImages {
+    "Auto": [],
+    "Clicker": [images.scythe, images.tractor]
+}
 
 function buildUpgradeCard(upgrade) {
     const card = document.createElement("div");
