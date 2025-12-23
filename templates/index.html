@@ -26,6 +26,8 @@
       Play Music 🎵
     </button>
 
+    <button id="saveData" onclick="handleSavePlayerData()">Save</button>
+
     <!-- Hero Section: A large, prominent section at the top of the page -->
     <section class="hero">
       <div class="container">
@@ -165,7 +167,13 @@
                   aria-labelledby="info"
                   tabindex="0"
                 >
-                  <div>I'm very helpful</div>
+                  <h2>How to play:</h2>
+                  <p>
+                    Click the mushroom to earn points.<br>
+                    Use points to purchase upgrades and skins<br>
+                    Purchase 5 of an upgrade to unlock the next one<br>
+                    Grow your mushroom garden!<br>
+                  </p>
                 </div>
               </div>
             </div>
@@ -210,6 +218,7 @@
           greenhouse : "{{ url_for('static', filename='images/greenhouse.png')}}",
           clipper : "{{ url_for('static', filename='images/clipper.png')}}",
           volunteer : "{{ url_for('static', filename='images/volunteer.png')}}",
+          defaultMushroom: "{{ url_for('static', filename='images/pngmushroom.png')}}",
           galaxy: "{{ url_for('static', filename='images/galaxyshroom.png')}}",
           candy: "{{ url_for('static', filename='images/candyshroom.png')}}",
           golden: "{{ url_for('static', filename='images/goldshroom.png')}}",
