@@ -81,7 +81,7 @@ function mushroomClick() {
     }
 }
 
-const upgradeImages {
+const upgradeImages = {
     "Auto": [],
     "Clicker": [images.scythe, images.tractor]
 }
