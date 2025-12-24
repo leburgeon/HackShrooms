@@ -1,5 +1,3 @@
-
-
 document.addEventListener("DOMContentLoaded", async function () {
     console.log("page loaded")
 
@@ -383,7 +381,7 @@ function spawnSparkle(x, y) {
 document.getElementById("main-mushroom-img")
     .addEventListener("click", (e) => {
         for (let i = 0; i < 5; i++) {
-            const randomx = Math.floor(Math.random() * 30) - 15
-            const randomy = Math.floor(Math.random() * 30) - 15
+            const randomx = Math.floor(Math.random() * 20) - 10
+            const randomy = Math.floor(Math.random() * 60) - 30
             spawnSparkle(e.pageX + randomx, e.pageY + randomy);
     }});
