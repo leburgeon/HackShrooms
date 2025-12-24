@@ -282,6 +282,7 @@ function createMushroom() {
 }
 
 
+
 function updateUnlocks() {
 
     const images = document.querySelectorAll('.locked-image');
@@ -339,3 +340,28 @@ function toggleMusic() {
         btn.style.backgroundColor = "#ffcf00"; // 
     }
 }
+
+
+function spawnSparkle(x, y) {
+    const sparkle = document.createElement("div");
+    sparkle.className = "sparkle";
+
+    const sparkles = ["★", "☆", "✹"];
+    sparkle.textContent = sparkles[Math.floor(Math.random() * sparkles.length)];
+
+    sparkle.style.left = `${x}px`;
+    sparkle.style.top = `${y}px`;
+
+    sparkle.style.setProperty("--x", `${(Math.random() - 0.5) * 40}px`);
+    sparkle.style.setProperty("--y", `${(Math.random() - 0.5) * 40}px`);
+
+    document.body.appendChild(sparkle);
+
+    setTimeout(() => sparkle.remove(), 600);
+}
+
+document.getElementById("main-mushroom-img")
+    .addEventListener("click", (e) => {
+        for (let i = 0; i < 5; i++) {
+            spawnSparkle(e.pageX, e.pageY);
+    }});

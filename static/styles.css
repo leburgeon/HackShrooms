@@ -33,6 +33,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    border-radius: 16px 20px 18px 22px;
 }
 
 .instr-title {
@@ -45,7 +46,7 @@ body {
     color: #FFDE66;
     text-shadow: #f6e4a4;
     font-size: 30px;
-    text-align: center;
+    text-align: center !important;
 }
 
 .instr {
@@ -87,7 +88,7 @@ ul {
     border-radius: 18px;
     border-spacing: 6px;
     padding: 20px;
-    height: 500px;
+    height: 575px;
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
 }
 
@@ -96,6 +97,15 @@ button {
     background-color: #FFDE66;
     border-color: #ccaf43;
     border-radius: 10px;
+    transition: transform 0.1s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: translateY(1px);
 }
 
 .nav-link {
@@ -175,9 +185,15 @@ footer {
     transition: filter 0.5s ease, opacity 0.5s ease;
 }
 
+@keyframes unlock { 
+    from { transform: scale(0.75); }
+    to { transform: scale(1); } 
+}
+
 #upgrade-imgs img.unlocked {
     filter: brightness(1);
     opacity: 1;
+    animation: unlock 400ms ease
 }
 
 .scroll-list {
@@ -222,3 +238,23 @@ footer {
 #info {
   margin-top: 20px;
 }
+
+.sparkle {
+    position: absolute;
+    pointer-events: none;
+    font-size: 22px;
+    animation: sparkle-fade 600ms ease-out forwards;
+    color: #f5e252;
+    }
+
+@keyframes sparkle-fade {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(var(--x), var(--y)) scale(0.2);
+        opacity: 0;
+    }
+}
+
