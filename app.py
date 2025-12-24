@@ -5,17 +5,17 @@ from utils import save_player_data, load_player_data, save_player_data
 app = Flask(__name__)
 
 
+@app.route('/')
+def renderlogin():
+    return render_template('login.html')
+
+
 @app.route('/play')
 def rendergame():
     username = request.args.get('username')
     if username is None:
         return redirect(url_for('renderlogin'))
     return render_template('index.html')
-
-
-@app.route('/')
-def renderlogin():
-    return render_template('login.html')
 
 
 @app.route('/api/saveplayerdata', methods=['POST'])
