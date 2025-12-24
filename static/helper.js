@@ -30,7 +30,17 @@ const savePlayerData = async (userData) => {
         }
     } catch (error) {
         window.alert('Could not save data! ' + error.message)
-        console.error(error)
+        console.error('Error saving data ')
+    }
+}
+
+const getLeaderBoardGame = async () => {
+    try {
+        const response = await fetch(apiUrl + '/leaderboard')
+        leaderboard_list = response.json()
+        return leaderboard_list
+    } catch (error){
+        console.log('Error fetching leaderboard')
     }
 }
 

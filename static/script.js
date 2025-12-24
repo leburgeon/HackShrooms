@@ -6,6 +6,9 @@ document.addEventListener("DOMContentLoaded", async function () {
     "clicker": [images.clipper, images.scythe, images.tractor, images.volunteer]
     }
 
+    // const leaderboard = await getLeaderBoardGame()
+    // console.log(leaderboard)
+
     // Load player data if any here
     const params = new URLSearchParams(window.location.search);
     const username = params.get("username");

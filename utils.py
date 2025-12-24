@@ -14,6 +14,7 @@ def load_player_data(username: str) -> dict | None:
     """Given a username, retrieve all of the information for that user"""
 
     all_data = load_all_data()
+
     for save in all_data:
         if save.get("username") == username:
             return save
@@ -26,6 +27,9 @@ def save_player_data(player_data: dict) -> bool:
 
     all_data = load_all_data()
     username_to_update = player_data.get("username")
+
+    if not all_data:
+        all_data = []
 
     for idx, player_info in enumerate(all_data):
 
