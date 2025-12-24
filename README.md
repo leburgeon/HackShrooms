@@ -11,15 +11,19 @@ points and upgrade your mushroom farm, get new skins, and more!
 - `styles.css` - Custom CSS styles
 - `script.js` - JavaScript for interactivity
 
+## We are deployed!
+
+Come check us out at https://hackshrooms.fly.dev/
+
+
 ### Running the Project
 
 Run a local server using Python's built-in HTTP server:
 
 ```bash
-python -m http.server 8000
+python3 app.py
 ```
-
-Then open `http://localhost:8000` in your browser.
+Thats it! Open `(http://127.0.0.1:5000)` in your browser.
 
 Any changes to the files will automatically reflect in the browser upon refresh.
 
