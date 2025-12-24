@@ -16,6 +16,16 @@ document.addEventListener("DOMContentLoaded", async function () {
     const fetchedUserData = await getPlayerData(username)
     console.log(fetchedUserData)
 
+    const leaderboardContainer = document.getElementById("leaders-list")
+    content = buildPlayerCard('Username', 'Lifetime Mushrooms')
+leaderboardContainer.innerHTML += content
+    leaderboard.forEach((player) => {
+        content = buildPlayerCard(player.username, player.lifetimeMushrooms)
+        leaderboardContainer.innerHTML += content
+    })
+
+
+
     // Handles a new user being added
     if (fetchedUserData == null){
         Game.username = username;
@@ -178,6 +188,31 @@ function upgradeCard(idx) {
         }
     }
 }
+
+function buildPlayerCard(username, points) {
+    const card = document.createElement("div");
+    card.classList = "card";
+
+    const content = `
+    <div class="card">
+        <div class="card-body">
+            <div class="container text-center">
+                <div class="row align-items-start">
+                    <div class="col">
+                        ${username}
+                    </div>
+                    <div class="col">
+                        ${points}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    `;
+
+    return content;
+}
+
 
 function buildUpgradeCard(type, idx, images) {
     const card = document.createElement("div");
