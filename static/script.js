@@ -351,6 +351,8 @@ function updateUpgrade(type, id) {
 
     var card = document.getElementById(type + "-" + id + "-card");
 
+    if (card == null) { return; }
+
     const image_parent = card.firstElementChild;
     const image = image_parent.firstElementChild;
     const name = image_parent.nextElementSibling;
