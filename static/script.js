@@ -92,12 +92,16 @@ function calculateMushroomPerSecond() {
     Game["upgrades"]["auto"].forEach((upgrade) => {
         mushroomPerSecond += (upgrade["baseValue"] * upgrade["lvl"]);
     })
+
+    document.getElementById("per-second").innerHTML = mushroomPerSecond;
 }
 
 function calculateMushroomPerClick() {
     Game["upgrades"]["clicker"].forEach((upgrade) => {
         mushroomPerClick += (upgrade["baseValue"] * upgrade["lvl"]);
     })
+
+    document.getElementById("per-click").innerHTML = mushroomPerClick;
 }
 
 setInterval(autoMushroomGenerator, 1000);
@@ -151,10 +155,14 @@ function upgradeCard(idx) {
         if (type == "auto") {
             mushroomPerSecond += Game["upgrades"][type][id]["baseValue"];
             Game["upgrades"][type][id]["cost"] = Math.ceil(Game["upgrades"][type][id]["baseCost"] * (1.2 ** Game["upgrades"][type][id]["lvl"]));
+
+            document.getElementById("per-second").innerHTML = mushroomPerSecond;
         }
         else {
             mushroomPerClick += Game["upgrades"][type][id]["baseValue"];
             Game["upgrades"][type][id]["cost"] = Math.ceil(Game["upgrades"][type][id]["baseCost"] * (1.4 ** Game["upgrades"][type][id]["lvl"]));
+
+            document.getElementById("per-click").innerHTML = mushroomPerClick;
         }
         
         upgradeCost.innerHTML = Game["upgrades"][type][id]["cost"];
