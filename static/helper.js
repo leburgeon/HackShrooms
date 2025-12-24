@@ -45,6 +45,5 @@ const getLeaderBoardGame = async () => {
 }
 
 function handleSavePlayerData() {
-    console.log(Game)
     savePlayerData(Game)
 }
