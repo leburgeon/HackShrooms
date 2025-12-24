@@ -3,7 +3,7 @@
 Help **grow** mushrooms (and stop them from **shrinking**) and collect points in this **Mushroom Masher**! Gain 
 points and upgrade your mushroom farm, get new skins, and more!
 
-<img src="pngmushroom.png" alt="mushroom" width="200"/>
+<img src="./static/images/pngmushroom.png" alt="mushroom" width="200"/>
 
 ## Project Structure 🍄
 
