@@ -98,6 +98,16 @@ button {
     border-color: #ccaf43;
     border-radius: 10px;
     transition: transform 0.1s ease;
+    box-shadow: 2px 2px 0 #6b0645,
+        4px 4px 0 #2e4109,
+        0 0 8px rgba(255, 230, 150, 0.6);
+}
+
+.nav-link {
+    box-shadow: 2px 2px 0 #6b0645,
+        4px 4px 0 #2e4109;
+    border-radius: 10px;
+    transition: transform 0.1s ease;
 }
 
 button:hover {
