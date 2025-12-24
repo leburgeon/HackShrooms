@@ -40,6 +40,19 @@ document.addEventListener("DOMContentLoaded", async function () {
     updateUpgrade("auto", 0)
     updateUpgrade("clicker", 0)
 
+    Game["upgrades"]["auto"].forEach((upgrade, idx) => {
+        if (upgrade["lvl"] >= 5 && upgrade != Game["upgrades"]["auto"][-1]) {
+            updateUpgrade("auto", idx + 1)
+        }        
+    })
+
+    Game["upgrades"]["clicker"].forEach((upgrade, idx) => {
+        
+        if (upgrade["lvl"] >= 5 && upgrade != Game["upgrades"]["clicker"][-1]) {
+            updateUpgrade("clicker", idx + 1)
+        }        
+    })
+
     const skinImages = [
         images.defaultMushroom,
         images.galaxy,
@@ -52,6 +65,13 @@ document.addEventListener("DOMContentLoaded", async function () {
     Game["skins"].forEach((name, idx) => {
         content = buildOptionsCard(name, idx, skinImages)
         optionsContainer.innerHTML += content;
+    })
+
+    Game["skins"].forEach((skin, idx) => {
+        
+        if (skin["owned"]) {
+            purchaseSkin(idx)
+        }    
     })
 
     calculateMushroomPerSecond()
