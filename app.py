@@ -36,10 +36,11 @@ def getplayerdata(username):
     print(player_data)
     return jsonify(player_data)
 
-# @app.route('/api/leaderboard', methods=['GET'])
 
-
-# def getleaderboard():
+@app.route('/api/leaderboard', methods=['GET'])
+def getleaderboard():
+    """ Retrieves the usernames of the top 5 players """
+    return jsonify(fetch_top_5_players())
 
 
 if __name__ == "__main__":
