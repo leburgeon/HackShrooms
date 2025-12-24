@@ -25,6 +25,31 @@ body {
     url('/static/images/pixelbg.jpg');
 }
 
+.instructions {
+    top: 90%;
+    background-color:#be9464b7;
+    border-radius: 18px;
+}
+
+.instr-title {
+    color: white;
+    font-size: 50px;
+}
+
+.instr-subtitle {
+    color: white;
+    font-size: 30px;
+    text-align: center;
+}
+
+.instr {
+    color: white;
+}
+
+ul {
+    text-align: left;
+}
+
 .hero {
     color: white;
     text-align: center;
@@ -46,22 +71,6 @@ body {
     padding: 20px;
     height: 500px;
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
-}
-
-.tab-content {
-    flex-grow: 1;
-}
-
-.tab-pane fade {
-    flex-grow: 1;
-}
-
-.column2 {
-    flex-grow: 1;
-}
-
-.col {
-    flex-grow: 1;
 }
 
 button {
