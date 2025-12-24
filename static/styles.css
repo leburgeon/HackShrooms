@@ -202,8 +202,8 @@ footer {
 
 .captain-toad {
     position: absolute; 
-    top: 55px;          
-    left: 50px;       
+    top: 65px;          
+    left: 90px;       
     z-index: 999;       
     height: 50px;
     
@@ -211,8 +211,8 @@ footer {
     }
 
 @keyframes moveSideToSide {
-    from { left: 7%; }
-    to { left: 90%; }
+    from { left: 15%; }
+    to { left: 80%; }
 }
 
 #musicToggle {
