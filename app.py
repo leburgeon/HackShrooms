@@ -1,13 +1,21 @@
-from flask import Flask, request, render_template, jsonify
+from flask import Flask, request, render_template, jsonify, redirect, url_for
 from utils import save_player_data, load_player_data, save_player_data
 
 
 app = Flask(__name__)
 
 
-@app.route('/')
-def hello_world():
+@app.route('/play')
+def rendergame():
+    username = request.args.get('username')
+    if username is None:
+        return redirect(url_for('renderlogin'))
     return render_template('index.html')
+
+
+@app.route('/login')
+def renderlogin():
+    return render_template('login.html')
 
 
 @app.route('/api/saveplayerdata', methods=['POST'])

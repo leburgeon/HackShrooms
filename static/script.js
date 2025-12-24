@@ -1,104 +1,64 @@
-var Game = {
-    username: null,
-    mushrooms: 0,
-    lifetimeMushrooms: 0,
-    upgrades: {
-        auto: [
-            {
-                name: "Grow Bed",
-                lvl: 0,
-                baseCost: 10,
-                cost: 10,
-                baseValue: 1
-            },
-            {
-                name: "Terrarium",
-                lvl: 0,
-                baseCost: 100,
-                cost: 100,
-                baseValue: 5
-            },
-            {
-                name: "Greenhouse",
-                lvl: 0,
-                baseCost: 1000,
-                cost: 1000,
-                baseValue: 10
-            },
-            {
-                name: "Farm",
-                lvl: 0,
-                baseCost: 10000,
-                cost: 10000,
-                baseValue: 500
-            },
-            {
-                name: "Laboratory",
-                lvl: 0,
-                baseCost: 100000,
-                cost: 100000,
-                baseValue: 1000
-            }
-        ],
-        clicker: [
-            {
-                name: "Clipper",
-                lvl: 0,
-                baseCost: 10,
-                cost: 10,
-                baseValue: 1
-            },
-            {
-                name: "Scythe",
-                lvl: 0,
-                baseCost: 100,
-                cost: 100,
-                baseValue: 5
-            },
-            {
-                name: "Tractor",
-                lvl: 0,
-                baseCost: 1000,
-                cost: 1000,
-                baseValue: 20
-            },
-            {
-                name: "Volunteer",
-                lvl: 0,
-                baseCost: 10000,
-                cost: 10000,
-                baseValue: 50
-            }
-        ]
-    },
-    skins: [
-        {
-            name: "Default",
-            baseCost: 0,
-            owned: true
-        },
-        {
-            name: "Galaxy",
-            baseCost: 1000,
-            owned: false
-        },
-        {
-            name: "Candyland",
-            baseCost: 3000,
-            owned: false
-        },
-        {
-            name: "Groot",
-            baseCost: 5000,
-            owned: false
-        },
-        {
-            name: "Golden",
-            baseCost: 10000,
-            owned: false
-        }
+
+
+document.addEventListener("DOMContentLoaded", async function () {
+    console.log("page loaded")
+
+    const upgradeImages = {
+    "auto": [images.bed, images.terrarium, images.greenhouse, images.farm, images.lab],
+    "clicker": [images.clipper, images.scythe, images.tractor, images.volunteer]
+    }
+
+    // Load player data if any here
+    const params = new URLSearchParams(window.location.search);
+    const username = params.get("username");
+
+    const fetchedUserData = await getPlayerData(username)
+    console.log(fetchedUserData)
+
+    // Handles a new user being added
+    if (fetchedUserData == null){
+        Game.username = username
+        savePlayerData(Game)
+    // Else loads the existing player data
+    } else {
+        Game = fetchedUserData
+    }
+
+    const autoUpgradeContainer = document.getElementById("auto-upgrades-list");
+    
+    Game["upgrades"]["auto"].forEach((upgrade, idx) => {
+        content = buildUpgradeCard("auto", idx, upgradeImages)
+        autoUpgradeContainer.innerHTML += content;
+    })
+
+    const clickerUpgradeContainer = document.getElementById("clicker-upgrades-list");
+    Game["upgrades"]["clicker"].forEach((upgrade, idx) => {
+        content = buildUpgradeCard("clicker", idx, upgradeImages)
+        clickerUpgradeContainer.innerHTML += content;
+    })
+
+    updateUpgrade("auto", 0)
+    updateUpgrade("clicker", 0)
+
+    const skinImages = [
+        images.defaultMushroom,
+        images.galaxy,
+        images.candy,
+        images.groot,
+        images.golden
     ]
-}
+
+    const optionsContainer = document.getElementById("skins-list");
+    Game["skins"].forEach((name, idx) => {
+        content = buildOptionsCard(name, idx, skinImages)
+        optionsContainer.innerHTML += content;
+    })
+
+    calculateMushroomPerSecond()
+    calculateMushroomPerClick()
+})
+
+setInterval(handleSavePlayerData, 10000)
 
 var mushroomPerSecond = 0
 var mushroomPerClick = 1
@@ -247,6 +207,7 @@ function buildOptionsCard(skin, idx, images) {
     return content;
 }
 
+
 function purchaseSkin(idx) {
     const skin = Game.skins[idx];
     if (Game.mushrooms < skin.baseCost) return;
@@ -272,51 +233,6 @@ function purchaseSkin(idx) {
     updateMushroomsCount();
     updateUnlocks();
 }
-
-document.addEventListener("DOMContentLoaded", function () {
-    console.log("page loaded")
-
-    const upgradeImages = {
-    "auto": [images.bed, images.terrarium, images.greenhouse, images.farm, images.lab],
-    "clicker": [images.clipper, images.scythe, images.tractor, images.volunteer]
-    }
-
-    // Load player data if any here
-
-    const autoUpgradeContainer = document.getElementById("auto-upgrades-list");
-    
-    Game["upgrades"]["auto"].forEach((upgrade, idx) => {
-        content = buildUpgradeCard("auto", idx, upgradeImages)
-        autoUpgradeContainer.innerHTML += content;
-    })
-
-    const clickerUpgradeContainer = document.getElementById("clicker-upgrades-list");
-    Game["upgrades"]["clicker"].forEach((upgrade, idx) => {
-        content = buildUpgradeCard("clicker", idx, upgradeImages)
-        clickerUpgradeContainer.innerHTML += content;
-    })
-
-    updateUpgrade("auto", 0)
-    updateUpgrade("clicker", 0)
-
-    const skinImages = [
-        images.defaultMushroom,
-        images.galaxy,
-        images.candy,
-        images.groot,
-        images.golden
-    ]
-
-    const optionsContainer = document.getElementById("skins-list");
-    Game["skins"].forEach((name, idx) => {
-        content = buildOptionsCard(name, idx, skinImages)
-        optionsContainer.innerHTML += content;
-    })
-
-    calculateMushroomPerSecond()
-    calculateMushroomPerClick()
-})
-
 
 setInterval(spawnMushroomMiniGame, 15000); 
 
