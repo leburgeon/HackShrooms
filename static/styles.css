@@ -137,6 +137,11 @@ footer {
     url('/static/images/headerfooterbf.gif');
     background-repeat: repeat-x;
     background-position: 10%;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
 }
 
 #main-mushroom-img {
@@ -168,6 +173,10 @@ footer {
 .footer-image-row {
     width: 100%;
     line-height: 0;
+    position: fixed;
+    bottom: 87px; 
+    width: 100%;
+    z-index: 20;
 }
 
 .footer-image-row img {
@@ -216,7 +225,6 @@ footer {
     left: 90px;       
     z-index: 999;       
     height: 50px;
-    
     animation: moveSideToSide 25s linear infinite alternate;
     }
 
@@ -233,20 +241,20 @@ footer {
 }
 
 #saveData {
-  position: absolute;   
-  top: 10px;         
-  right: 10px;        
-  z-index: 9999;
+    position: absolute;   
+    top: 10px;         
+    right: 10px;        
+    z-index: 9999;
 }
 
 #login-form {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #info {
-  margin-top: 20px;
+    margin-top: 20px;
 }
 
 .sparkle {
@@ -267,4 +275,3 @@ footer {
         opacity: 0;
     }
 }
-
