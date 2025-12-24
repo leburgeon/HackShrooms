@@ -363,5 +363,7 @@ function spawnSparkle(x, y) {
 document.getElementById("main-mushroom-img")
     .addEventListener("click", (e) => {
         for (let i = 0; i < 5; i++) {
-            spawnSparkle(e.pageX, e.pageY);
+            const randomx = Math.floor(Math.random() * 30) - 15
+            const randomy = Math.floor(Math.random() * 30) - 15
+            spawnSparkle(e.pageX + randomx, e.pageY + randomy);
     }});
