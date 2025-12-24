@@ -57,8 +57,8 @@
                   </p>
                 </div>
               </div>
-              <div id="main-mushroom" onclick="mushroomClick()">
-                <img id="main-mushroom-img" src="{{ url_for('static', filename='images/pngmushroom.png') }}" onclick="pulseMushroom()"/>
+              <div id="main-mushroom">
+                <img id="main-mushroom-img" src="{{ url_for('static', filename='images/pngmushroom.png') }}" onclick="pulseMushroom(); mushroomClick()"/>
               </div>
             </div>
           </div>
