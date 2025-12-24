@@ -36,7 +36,7 @@ const savePlayerData = async (userData) => {
 
 const getLeaderBoardGame = async () => {
     try {
-        const response = await fetch(apiUrl + '/leaderboard')
+        const response = await fetch(apiUrl + 'leaderboard')
         leaderboard_list = response.json()
         return leaderboard_list
     } catch (error){
