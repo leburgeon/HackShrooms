@@ -4,8 +4,6 @@ from utils import save_player_data, load_player_data, save_player_data, fetch_to
 
 app = Flask(__name__)
 
-print(fetch_top_5_players())
-
 
 @app.route('/')
 def renderlogin():
