@@ -13,7 +13,7 @@ def rendergame():
     return render_template('index.html')
 
 
-@app.route('/login')
+@app.route('/')
 def renderlogin():
     return render_template('login.html')
 
