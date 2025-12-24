@@ -75,27 +75,32 @@ var Game = {
         {
             name: "Default",
             baseCost: 0,
-            owned: true
+            owned: true,
+            selected: true
         },
         {
             name: "Galaxy",
             baseCost: 1000,
-            owned: false
+            owned: false,
+            selected: false
         },
         {
             name: "Candyland",
             baseCost: 3000,
-            owned: false
+            owned: false,
+            selected: false
         },
         {
             name: "Groot",
             baseCost: 5000,
-            owned: false
+            owned: false,
+            selected: false
         },
         {
             name: "Golden",
             baseCost: 10000,
-            owned: false
+            owned: false,
+            selected: false
         }
     ]
 }

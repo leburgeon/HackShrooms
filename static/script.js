@@ -15,39 +15,39 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     // Handles a new user being added
     if (fetchedUserData == null){
-        Game.username = username
-        savePlayerData(Game)
+        Game.username = username;
+        savePlayerData(Game);
     // Else loads the existing player data
     } else {
-        Game = fetchedUserData
+        Game = fetchedUserData;
     }
 
     const autoUpgradeContainer = document.getElementById("auto-upgrades-list");
     
     Game["upgrades"]["auto"].forEach((upgrade, idx) => {
-        content = buildUpgradeCard("auto", idx, upgradeImages)
+        content = buildUpgradeCard("auto", idx, upgradeImages);
         autoUpgradeContainer.innerHTML += content;
     })
 
     const clickerUpgradeContainer = document.getElementById("clicker-upgrades-list");
     Game["upgrades"]["clicker"].forEach((upgrade, idx) => {
-        content = buildUpgradeCard("clicker", idx, upgradeImages)
+        content = buildUpgradeCard("clicker", idx, upgradeImages);
         clickerUpgradeContainer.innerHTML += content;
     })
 
-    updateUpgrade("auto", 0)
-    updateUpgrade("clicker", 0)
+    updateUpgrade("auto", 0);
+    updateUpgrade("clicker", 0);
 
     Game["upgrades"]["auto"].forEach((upgrade, idx) => {
         if (upgrade["lvl"] >= 5 && upgrade != Game["upgrades"]["auto"][-1]) {
-            updateUpgrade("auto", idx + 1)
+            updateUpgrade("auto", idx + 1);
         }        
     })
 
     Game["upgrades"]["clicker"].forEach((upgrade, idx) => {
         
         if (upgrade["lvl"] >= 5 && upgrade != Game["upgrades"]["clicker"][-1]) {
-            updateUpgrade("clicker", idx + 1)
+            updateUpgrade("clicker", idx + 1);
         }        
     })
 
@@ -57,39 +57,46 @@ document.addEventListener("DOMContentLoaded", async function () {
         images.candy,
         images.groot,
         images.golden
-    ]
+    ];
 
+    selectedSkin = 0;
     const optionsContainer = document.getElementById("skins-list");
     Game["skins"].forEach((name, idx) => {
-        content = buildOptionsCard(name, idx, skinImages)
+        content = buildOptionsCard(name, idx, skinImages);
         optionsContainer.innerHTML += content;
+
+        if (name["selected"]) {
+            selectedSkin = idx;
+        }
     })
 
     Game["skins"].forEach((skin, idx) => {
         
         if (skin["owned"]) {
-            purchaseSkin(idx)
+            purchaseSkin(idx);
         }    
     })
+    purchaseSkin(0);
+    purchaseSkin(selectedSkin);
 
-    calculateMushroomPerSecond()
-    calculateMushroomPerClick()
+    calculateMushroomPerSecond();
+    calculateMushroomPerClick();
 })
 
-setInterval(handleSavePlayerData, 10000)
+setInterval(handleSavePlayerData, 10000);
 
-var mushroomPerSecond = 0
-var mushroomPerClick = 1
+var mushroomPerSecond = 0;
+var mushroomPerClick = 1;
 
 function calculateMushroomPerSecond() {
     Game["upgrades"]["auto"].forEach((upgrade) => {
-        mushroomPerSecond += (upgrade["baseValue"] * upgrade["lvl"])
+        mushroomPerSecond += (upgrade["baseValue"] * upgrade["lvl"]);
     })
 }
 
 function calculateMushroomPerClick() {
     Game["upgrades"]["clicker"].forEach((upgrade) => {
-        mushroomPerClick += (upgrade["baseValue"] * upgrade["lvl"])
+        mushroomPerClick += (upgrade["baseValue"] * upgrade["lvl"]);
     })
 }
 
@@ -99,7 +106,7 @@ function autoMushroomGenerator() {
     Game["mushrooms"] += mushroomPerSecond; 
     Game["lifetimeMushrooms"] += mushroomPerSecond;
 
-    updateMushroomsCount()
+    updateMushroomsCount();
     updateUnlocks();
 }
 
@@ -128,35 +135,35 @@ function mushroomClick() {
 }
 
 function upgradeCard(idx) {
-    idInfo = idx.split("-")
-    type = idInfo[0]
-    id = Number(idInfo[1])
+    idInfo = idx.split("-");
+    type = idInfo[0];
+    id = Number(idInfo[1]);
     
     if (Game["mushrooms"] >= Game["upgrades"][type][id]["cost"]) {
         var upgradeLvl = document.getElementById(idx + "-lvl");
         var upgradeCost = document.getElementById(idx);
 
-        Game["upgrades"][type][id]["lvl"] += 1
-        upgradeLvl.innerHTML = Game["upgrades"][type][id]["lvl"]
+        Game["upgrades"][type][id]["lvl"] += 1;
+        upgradeLvl.innerHTML = Game["upgrades"][type][id]["lvl"];
 
-        Game["mushrooms"] -= Game["upgrades"][type][id]["cost"]
+        Game["mushrooms"] -= Game["upgrades"][type][id]["cost"];
 
         if (type == "auto") {
-            mushroomPerSecond += Game["upgrades"][type][id]["baseValue"]
-            Game["upgrades"][type][id]["cost"] = Math.ceil(Game["upgrades"][type][id]["baseCost"] * (1.2 ** Game["upgrades"][type][id]["lvl"]))
+            mushroomPerSecond += Game["upgrades"][type][id]["baseValue"];
+            Game["upgrades"][type][id]["cost"] = Math.ceil(Game["upgrades"][type][id]["baseCost"] * (1.2 ** Game["upgrades"][type][id]["lvl"]));
         }
         else {
-            mushroomPerClick += Game["upgrades"][type][id]["baseValue"]
-            Game["upgrades"][type][id]["cost"] = Math.ceil(Game["upgrades"][type][id]["baseCost"] * (1.4 ** Game["upgrades"][type][id]["lvl"]))
+            mushroomPerClick += Game["upgrades"][type][id]["baseValue"];
+            Game["upgrades"][type][id]["cost"] = Math.ceil(Game["upgrades"][type][id]["baseCost"] * (1.4 ** Game["upgrades"][type][id]["lvl"]));
         }
         
-        upgradeCost.innerHTML = Game["upgrades"][type][id]["cost"]
+        upgradeCost.innerHTML = Game["upgrades"][type][id]["cost"];
 
         updateMushroomsCount();
         updateUnlocks();
 
         if (Game["upgrades"][type][id]["lvl"] == 5) {
-            updateUpgrade(type, id + 1)
+            updateUpgrade(type, id + 1);
         }
     }
 }
@@ -188,7 +195,7 @@ function buildUpgradeCard(type, idx, images) {
     </div>
     `;
 
-    return content
+    return content;
 }
 
 function buildOptionsCard(skin, idx, images) {
@@ -231,12 +238,22 @@ function purchaseSkin(idx) {
     if (Game.mushrooms < skin.baseCost) return;
 
     Game.mushrooms -= skin.baseCost;
-    skin.baseCost = 0
+    skin.baseCost = 0;
     skin.owned = true;
     document.getElementById(`skin-${idx}-status`).innerHTML = "Owned";
 
     const btn = document.getElementById(`skin-${idx}`);
-    btn.innerHTML = "Select";
+    btn.innerHTML = "Selected";
+
+    Game["skins"].forEach((skinObj, idObj) => {
+        
+        if (skinObj["selected"]) {
+            skinObj["selected"] = false;
+            document.getElementById(`skin-${idObj}`).innerHTML = "Select";
+        }    
+    })
+
+    Game["skins"][idx]["selected"] = true;
 
     const skinImages = [
         images.defaultMushroom,
@@ -244,9 +261,9 @@ function purchaseSkin(idx) {
         images.candy,
         images.groot,
         images.golden
-    ]
+    ];
 
-    mushroom.firstElementChild.src = skinImages[idx]
+    mushroom.firstElementChild.src = skinImages[idx];
 
     updateMushroomsCount();
     updateUnlocks();
@@ -264,14 +281,14 @@ function createMushroom() {
 
     // Spawn mushroom on screen
     const mush = document.createElement('img');
-    mush.src = images.smallmush
+    mush.src = images.smallmush;
     mush.classList.add('mushroom');
 
     // Use random co-ordinates
-    leftX = 100
-    rightX = 800
-    bottomY = 0
-    topY = 600
+    leftX = 100;
+    rightX = 800;
+    bottomY = 0;
+    topY = 600;
 
     const x = Math.random() * (rightX - leftX);
     const y = Math.random() * (topY - bottomY);
@@ -282,7 +299,7 @@ function createMushroom() {
     // Add points and remove mushroom on click
     mush.addEventListener('click', () => {
         
-        mushroomsToAdd = Math.max(Math.ceil(mushroomPerSecond * 10), 50)
+        mushroomsToAdd = Math.max(Math.ceil(mushroomPerSecond * 10), 50);
         Game["mushrooms"] += mushroomsToAdd;
         Game["lifetimeMushrooms"] += mushroomsToAdd;
         numbers.innerHTML = Game["mushrooms"];
@@ -323,18 +340,18 @@ function updateUpgrade(type, id) {
 
     var card = document.getElementById(type + "-" + id + "-card");
 
-    const image_parent = card.firstElementChild
-    const image = image_parent.firstElementChild
-    const name = image_parent.nextElementSibling
-    const level = name.nextElementSibling
-    const button_parent = level.nextElementSibling
-    const button = button_parent.firstElementChild
+    const image_parent = card.firstElementChild;
+    const image = image_parent.firstElementChild;
+    const name = image_parent.nextElementSibling;
+    const level = name.nextElementSibling;
+    const button_parent = level.nextElementSibling;
+    const button = button_parent.firstElementChild;
 
     image.classList.add('unlocked');
-    name.innerHTML = Game["upgrades"][type][id]["name"]
-    level.innerHTML = Game["upgrades"][type][id]["lvl"]
-    button.disabled = false
-    button.innerHTML = Game["upgrades"][type][id]["cost"]
+    name.innerHTML = Game["upgrades"][type][id]["name"];
+    level.innerHTML = Game["upgrades"][type][id]["lvl"];
+    button.disabled = false;
+    button.innerHTML = Game["upgrades"][type][id]["cost"];
 }
 
 function playAudio() {
@@ -355,7 +372,7 @@ function toggleMusic() {
     } else {
         bgMusic.pause();
         btn.innerHTML = "Play Music";
-        btn.style.backgroundColor = "#ffcf00"; // 
+        btn.style.backgroundColor = "#ffcf00";
     }
 }
 
@@ -381,7 +398,7 @@ function spawnSparkle(x, y) {
 document.getElementById("main-mushroom-img")
     .addEventListener("click", (e) => {
         for (let i = 0; i < 5; i++) {
-            const randomx = Math.floor(Math.random() * 20) - 10
-            const randomy = Math.floor(Math.random() * 60) - 30
+            const randomx = Math.floor(Math.random() * 20) - 10;
+            const randomy = Math.floor(Math.random() * 60) - 30;
             spawnSparkle(e.pageX + randomx, e.pageY + randomy);
     }});
