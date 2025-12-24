@@ -334,7 +334,7 @@ function updateUpgrade(type, id) {
 
     image.classList.add('unlocked');
     name.innerHTML = Game["upgrades"][type][id]["name"]
-    level.innerHTML = 0
+    level.innerHTML = Game["upgrades"][type][id]["lvl"]
     button.disabled = false
     button.innerHTML = Game["upgrades"][type][id]["cost"]
 }
