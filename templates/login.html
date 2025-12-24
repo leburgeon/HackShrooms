@@ -38,7 +38,7 @@
         <form action="/play" name="usernameform" onsubmit="return validateUsername()">
           <label for="fname">Username:</label><br>
           <input type="text" id="fname" name="username" required><br>
-          <button>Go!</button>
+          <button id="gobutton">Go!</button>
           <div>Enter a username to create or continue a save!</div>
           <div>Usernames must be between 3 and 15 characters!</div>
           <div>The game saves every 10 seconds!</div>
@@ -67,27 +67,6 @@
         <p>&copy; 2025 Mycelium Rising inc. All rights reserved.</p>
       </div>
     </footer>
-
-    <!-- Flask-rendered urls -->
-    <script>
-        const images = {
-          smallmush : "{{ url_for('static', filename='images/mush1.png')}}",
-          scythe : "{{ url_for('static', filename='images/scythe.png')}}",
-          tractor : "{{ url_for('static', filename='images/tractor.png')}}",
-          bed : "{{ url_for('static', filename='images/mushroombedpixel.png')}}",
-          farm : "{{ url_for('static', filename='images/pixelfarm.png')}}",
-          lab : "{{ url_for('static', filename='images/lab.png')}}",
-          terrarium : "{{ url_for('static', filename='images/terrarium.png')}}",
-          greenhouse : "{{ url_for('static', filename='images/greenhouse.png')}}",
-          clipper : "{{ url_for('static', filename='images/clipper.png')}}",
-          volunteer : "{{ url_for('static', filename='images/volunteer.png')}}",
-          defaultMushroom: "{{ url_for('static', filename='images/pngmushroom.png')}}",
-          galaxy: "{{ url_for('static', filename='images/galaxyshroom.png')}}",
-          candy: "{{ url_for('static', filename='images/candyshroom.png')}}",
-          golden: "{{ url_for('static', filename='images/goldshroom.png')}}",
-          groot: "{{ url_for('static', filename='images/grootshroom.png')}}"
-        }
-    </script>
 
     <!-- Bootstrap JS: Required for interactive components like the mobile menu -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
