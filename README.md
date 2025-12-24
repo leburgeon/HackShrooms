@@ -18,7 +18,7 @@ Come check us out at https://hackshrooms.fly.dev/
 
 ### Running the Project
 
-Run a local server using Python's built-in HTTP server:
+Run the game using a flask app. Run:
 
 ```bash
 python3 app.py
@@ -29,13 +29,9 @@ Any changes to the files will automatically reflect in the browser upon refresh.
 
 #### Auto-Reload
 
-To enable auto-reloading during development, you can use a tool like [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) in VSCode.
+To enable auto-reloading during development, you can use Flasks debug mode
 
-When install, click the "Go Live" button at the bottom-right corner of VSCode to start the server with auto-reload functionality.
-
-You will then be able to see changes in real-time as you edit your files.
-
-Go to `http://localhost:5500` (or the port specified by Live Server) to view your project.
+```flask --app app run --debug```
 
 ## Technologies Used
 
