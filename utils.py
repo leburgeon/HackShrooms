@@ -41,6 +41,21 @@ def save_player_data(player_data: dict) -> bool:
         return True
 
 
+def fetch_top_5_players() -> list[dict]:
+    """ Works out the top 5 players """
+    all_players = load_all_data()
+    sorted_players = sorted(
+        all_players, key=lambda d: d['lifetimeMushrooms'])
+
+    top_players = []
+    while len(sorted_players) > 0 and len(top_players) < 5:
+        player = sorted_players.pop()
+        top_players.append(
+            {'username': player['username'], 'lifetimeMushrooms': player['lifetimeMushrooms']})
+
+    return top_players
+
+
 if __name__ == "__main__":
     test_payload = {"username": "test3",
                     "score": 999,
